@@ -16,14 +16,6 @@
     
     //set navigation controller
     
-    /*UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ViewController *myViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ViewController"];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:myViewController];
-    
-    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    _window.rootViewController = navigationController;
-    [_window makeKeyAndVisible]; */
-    
     
     // Initialize Parse.
     [Parse setApplicationId:@"N7kQs8tlZwXtAvI8oUll4TWyfp4CVeZIj9YAylpU"
