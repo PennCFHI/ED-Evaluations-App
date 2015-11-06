@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "Globals.h"
 
 @implementation AppDelegate
 
@@ -23,6 +24,222 @@
     
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    
+    //Initialize Arrays
+    CompetencyOne =
+    [ NSArray arrayWithObjects:
+     //0 - name of competency
+     @"Emergency Stabilization",
+     //1
+     @"Unable to assess",
+     //2
+     @"0: Has Not Achieved",
+     //3
+     @"1: Recognizes Abnormal Vital Signs",
+     //4
+     @"1.5",
+     //5
+     @"2: Recognizes when a patient is unstable, requiring immediate intervention",
+     //6
+     @"2.5",
+     //7
+     @"3: Reassesses patient after a stabilization intervention. Prioritizes critical stabilization actions",
+     //8
+     @"3.5",
+     //9
+     @"4: Recognizes when resucitation efforts are ineffective",
+     //10
+     @"4.5",
+     //10
+     @"5: Develops policies and procedures for the management of critically ill patients",
+     //11
+     nil
+     ];
+    
+    CompetencyTwo =
+    [ NSArray arrayWithObjects:
+     @"Performance of Focused History and Physical Exam",
+     @"Unable to assess",
+     @"Has not achieved",
+     @"Performs and communicates a reliable H&P",
+     @"1.5",
+     @"Performs and communicates a chief complaint focused H&P",
+     @"2.5",
+     @"Prioritizes essential components of the H&P in a time critical situation",
+     @"3.5",
+     @"Synthesizes ancillary data (past records, family) routinely when gathering the H&P",
+     @"4.5",
+     @"Identifies obscure, occult, or rare conditions based soley on H&P",
+     nil];
+    
+    CompetencyThree =
+    [ NSArray arrayWithObjects:
+     @"Diagnostic Studies",
+     @"Unable to assess",
+     @"Has not achieved",
+     @"Determines when diagnostic studies are needed",
+     @"1.5",
+     @"Prioritized essential testing",
+     @"2.5",
+     @"Interprets diagnostic studies accurately and seeks assistance when needed",
+     @"3.5",
+     @"Uses diagnostic testing based on pretest probability",
+     @"4.5",
+     @"Discriminates between subtle and/or conflicting diagnostic results in the context of the patient presentation",
+     nil];
+    
+    CompetencyFour =
+    [ NSArray arrayWithObjects:
+     @"Diagnosis",
+     @"Unable to assess",
+     @"Has not achieved",
+     @"Able to contruct a 'most likely' DDX",
+     @"1.5",
+     @"Able to construct a 'most deadly' DDX",
+     @"2.5",
+     @"Revises the DDX in response to patients course",
+     @"3.5",
+     @"Constructs a weighted DDX using all available data and develops a management strategy",
+     @"4.5",
+     @"Uses clinical experience to identify outliers or unusual presentations",
+     nil];
+    
+    CompetencyFive =
+    [ NSArray arrayWithObjects:
+     @"Pharmacotherapy",
+     @"Unable to assess",
+     @"Has not achieved",
+     @"Knows classifications and mechanisms of action of commonly used medications",
+     @"1.5",
+     @"Considers adverse effects of medications",
+     @"2.5",
+     @"Considers and recognizes potential drug-drug interactions \nConsiders medication options and selects an appropriate agent",
+     @"3.5",
+     @"Selects appropriate medications based upon age, weight, and co-morbidities as well as clinical guidelines and financial considerations",
+     @"4.5",
+     @"Participates in developing institutional policies on pharmacotherapy",
+     nil];
+    
+    CompetencySix =
+    [ NSArray arrayWithObjects:
+     @"Observation and Reassessment",
+     @"Unable to assess",
+     @"Has not achieved",
+     @"Recognizes the need for patient reevaluation",
+     @"1.5",
+     @"Monitors that necessary therapeutic interventions are performed",
+     @"2.5",
+     @"Identifies which patients will require ED reassessment \nReevaluates the efficacy of treatments when indicated",
+     @"3.5",
+     @"Complies and documents with regulatory requirements for disposition of patients to observation and admission",
+     @"4.5",
+     @"Develops protocols to avoid potential complications of therapies",
+     nil];
+    
+    
+    CompetencySeven =
+    [ NSArray arrayWithObjects:
+     @"Disposition",
+     @"Unable to assess",
+     @"Has not achieved",
+     @"Describes basic resources available in ED",
+     @"1.5",
+     @"Formulates specific follow-up plan for common ED complaints",
+     @"2.5",
+     @"Makes correct disposition decisions (home vs admit vs ICU)",
+     @"3.5",
+     @"Routinely discusses discharge plans with patients and their family",
+     @"4.5",
+     @"Develops institutional systems to enhance safe patient dispositions",
+     nil];
+    
+    CompetencyEight =
+    [ NSArray arrayWithObjects:
+     @"Multi-tasking",
+     @"Unable to assess",
+     @"Has not achieved",
+     @"Manages a single patient effectively",
+     @"1.5",
+     @"Effectively task switches between two patients",
+     @"2.5",
+     @"Effectively task switches among multiple patients",
+     @"3.5",
+     @"Effectively task switches among patient care, trauma assessments, medical command, and senior admin duties",
+     @"4.5",
+     @"Effectively task switches in a surge or disaster situation",
+     nil];
+    
+    CompetencyNine =
+    [ NSArray arrayWithObjects:
+     @"General Approach to Procedures",
+     @"Unable to assess",
+     @"Has not achieved",
+     @"Understands the importance of universal precautions",
+     @"1.5",
+     @"Knows the indications, complications, anatomic landmarks, equipment, and techniques to perform common ED procedures",
+     @"2.5",
+     @"Determines alternative strategy if initial attempts to perform a procedure are unsuccessful",
+     @"3.5",
+     @"Performs procedure on patients with challenging features (poor landmarks, extremes of age, co-morbidities)",
+     @"4.5",
+     @"Teaches procedural competency and corrects mistakes",
+     nil];
+    
+    CompetencyTen =
+    [ NSArray arrayWithObjects:
+     @"Anesthesia and Acute Pain Management",
+     @"Unable to assess",
+     @"Has not achieved",
+     @"Uses local anesthetics appropriate (proper dosing and technique)",
+     @"1.5",
+     @"Knows the appropriate indications, dosing, and complications of analgesics and sedative medicaitons",
+     @"2.5",
+     @"Routinely performs presedation assessment and obtains informed consent \nEnsures appropriate monitoring during procedural sedation",
+     @"3.5",
+     @"Titrates procedural sedation medications to ensure adequate sedation while minimizing recovery time",
+     @"4.5",
+     @"Develops pain management protocols and care plans",
+     nil];
+    
+    CompetencyEleven =
+    [ NSArray arrayWithObjects:
+     @"Team Management",
+     @"Unable to assess",
+     @"Has not achieved",
+     @"Participates as a member of a patient care team",
+     @"1.5",
+     @"Communicates effectively with faculty, nurses and other ED staff",
+     @"2.5",
+     @"Communicates effectively when performing Doc to Doc, sign out rounds, and with consultants",
+     @"3.5",
+     @"Uses flexible communication strategies when interacting with difficult consultants",
+     @"4.5",
+     @"Participates in and leads interdepartmental patient-centered care groups",
+     nil];
+    
+    CompetencyTwelve =
+    [ NSArray arrayWithObjects:
+     @"Describe any feedback you discussed with the resident",
+     nil];
+    
+    Competencies =
+    [ NSArray arrayWithObjects:
+     CompetencyOne,
+     CompetencyTwo,
+     CompetencyThree,
+     CompetencyFour,
+     CompetencyFive,
+     CompetencySix,
+     CompetencySeven,
+     CompetencyEight,
+     CompetencyNine,
+     CompetencyTen,
+     CompetencyEleven,
+     CompetencyTwelve,
+     nil];
+    
+
     
     
     // Override point for customization after application launch.

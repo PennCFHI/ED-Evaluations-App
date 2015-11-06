@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24ED72AA1BED5E4500683497 /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 24ED72A71BED5E4500683497 /* Globals.m */; };
+		24ED72AB1BED5E4500683497 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24ED72A91BED5E4500683497 /* QuestionViewController.m */; };
 		3E2840341BDBE256005DC942 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2840331BDBE256005DC942 /* Foundation.framework */; };
 		3E2840361BDBE256005DC942 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2840351BDBE256005DC942 /* CoreGraphics.framework */; };
 		3E2840381BDBE257005DC942 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2840371BDBE257005DC942 /* UIKit.framework */; };
@@ -53,6 +55,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24ED72A61BED5E4500683497 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		24ED72A71BED5E4500683497 /* Globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Globals.m; sourceTree = "<group>"; };
+		24ED72A81BED5E4500683497 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
+		24ED72A91BED5E4500683497 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		3E2840301BDBE256005DC942 /* EmergencyEvals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmergencyEvals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E2840331BDBE256005DC942 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3E2840351BDBE256005DC942 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -189,6 +195,10 @@
 				3E2840431BDBE257005DC942 /* AppDelegate.m */,
 				3E2840451BDBE257005DC942 /* Main.storyboard */,
 				3E2840481BDBE257005DC942 /* ViewController.h */,
+				24ED72A61BED5E4500683497 /* Globals.h */,
+				24ED72A71BED5E4500683497 /* Globals.m */,
+				24ED72A81BED5E4500683497 /* QuestionViewController.h */,
+				24ED72A91BED5E4500683497 /* QuestionViewController.m */,
 				3E2840491BDBE257005DC942 /* ViewController.m */,
 				3EC9AE741BE51AAB009292D4 /* QRScannerViewController.h */,
 				3EC9AE751BE51AAB009292D4 /* QRScannerViewController.m */,
@@ -333,6 +343,8 @@
 			files = (
 				3EC9AE761BE51AAB009292D4 /* QRScannerViewController.m in Sources */,
 				3E28404A1BDBE257005DC942 /* ViewController.m in Sources */,
+				24ED72AB1BED5E4500683497 /* QuestionViewController.m in Sources */,
+				24ED72AA1BED5E4500683497 /* Globals.m in Sources */,
 				3E2840441BDBE257005DC942 /* AppDelegate.m in Sources */,
 				3EC9AE731BE25B08009292D4 /* QRCodeViewController.m in Sources */,
 				3E2840401BDBE257005DC942 /* main.m in Sources */,
