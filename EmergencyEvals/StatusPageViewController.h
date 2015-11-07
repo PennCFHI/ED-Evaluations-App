@@ -7,19 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ResidentListTableViewController.h"
 
-BOOL running;
+
+BOOL startWasPressed;
 
 @interface StatusPageViewController : UIViewController
 
 @property (strong, nonatomic) UIButton *startStopButton; //sender in tutorial code
-@property (strong, nonatomic) UILabel *timeLabel; //lbl in tutorial code
-@property (strong, nonatomic) NSTimer *stopTimer;
-@property (strong, nonatomic) NSDate *startDate;
 @property (strong, nonatomic) NSMutableArray *residentList;
+@property (strong, nonatomic) NSString *shiftDate;
+
 
 -(IBAction)startPressed:(id)sender;
--(void)updateTimer;
+
 
 @end
 
