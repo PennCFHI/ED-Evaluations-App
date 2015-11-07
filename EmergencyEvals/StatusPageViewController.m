@@ -15,28 +15,53 @@
 }
 
 -(void)viewDidLoad{
-    self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,140,self.view.frame.size.width - 40,30)];
-    [self.timeLabel setText:@"QR Code Reader is not yet running..."];
-    [self.timeLabel setFont:[UIFont systemFontOfSize:20.0]];
-    [self.timeLabel setTextAlignment: NSTextAlignmentCenter];
-    [self.view addSubview:self.timeLabel];
 
-    self.startStopButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 200/2, self.view.frame.size.height - 60, 200, 50)];
+    self.startStopButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 200/2, self.view.frame.size.height/2 - 50/2, 200, 50)];
     [self.startStopButton setTitle:@"Start Shift" forState:UIControlStateNormal];
-    [self.startStopButton setBackgroundColor:[UIColor blackColor]];
+    [self.startStopButton setBackgroundColor:[UIColor greenColor]];
     [self.startStopButton addTarget:self action:@selector(startPressed:) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:self.startStopButton];
+    
+    startWasPressed = false;
 }
 
 -(IBAction)startPressed:(id)sender{
-    NSLog(@"Start Shift Pressed");
-    NSLog(@"resident list: %@", self.residentList);
     
+    if(startWasPressed == false)
+    {
+        NSLog(@"start button was pressed");
+        
+        //store date information
+        NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+        NSLog(@"%@",[dateFormatter stringFromDate:[NSDate date]]);
+        self.shiftDate = [dateFormatter stringFromDate:[NSDate date]];
+        
+        //change button properties to Stop
+        [self.startStopButton setTitle:@"Stop Shift" forState:UIControlStateNormal];
+        [self.startStopButton setBackgroundColor:[UIColor redColor]];
+        startWasPressed = true;
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"statusToTable" sender:self];
+        startWasPressed = false; 
+    }
     
 }
 
--(void)updateTimer{
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if([[segue identifier] isEqualToString:@"statusToTable"]){
+        
+        
+        ResidentListTableViewController *residentTable = [segue destinationViewController];
+        residentTable.residentQRList = [[NSMutableArray alloc] initWithArray:self.residentList];
+        residentTable.shiftDate = [[NSString alloc] initWithString:self.shiftDate];
+        NSLog(@"QR List to populate table: %@", residentTable.residentQRList);
+        NSLog(@"date to transfer to table: %@", residentTable.shiftDate);
+    }
     
 }
-
 @end
