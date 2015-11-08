@@ -42,6 +42,7 @@
 		3EC9AE731BE25B08009292D4 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AE721BE25B08009292D4 /* QRCodeViewController.m */; };
 		3EC9AE761BE51AAB009292D4 /* QRScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AE751BE51AAB009292D4 /* QRScannerViewController.m */; };
 		3EC9AE781BE52B6A009292D4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC9AE771BE52B69009292D4 /* AVFoundation.framework */; };
+		3EDA08961BEE44BB00413EB0 /* ResidentListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDA08951BEE44BB00413EB0 /* ResidentListTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,8 @@
 		3EC9AE741BE51AAB009292D4 /* QRScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScannerViewController.h; sourceTree = "<group>"; };
 		3EC9AE751BE51AAB009292D4 /* QRScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScannerViewController.m; sourceTree = "<group>"; };
 		3EC9AE771BE52B69009292D4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3EDA08941BEE44BB00413EB0 /* ResidentListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResidentListTableViewController.h; sourceTree = "<group>"; };
+		3EDA08951BEE44BB00413EB0 /* ResidentListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResidentListTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +197,8 @@
 				3E2840421BDBE257005DC942 /* AppDelegate.h */,
 				3E2840431BDBE257005DC942 /* AppDelegate.m */,
 				3E2840451BDBE257005DC942 /* Main.storyboard */,
+				3EDA08941BEE44BB00413EB0 /* ResidentListTableViewController.h */,
+				3EDA08951BEE44BB00413EB0 /* ResidentListTableViewController.m */,
 				3E2840481BDBE257005DC942 /* ViewController.h */,
 				24ED72A61BED5E4500683497 /* Globals.h */,
 				24ED72A71BED5E4500683497 /* Globals.m */,
@@ -341,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EDA08961BEE44BB00413EB0 /* ResidentListTableViewController.m in Sources */,
 				3EC9AE761BE51AAB009292D4 /* QRScannerViewController.m in Sources */,
 				3E28404A1BDBE257005DC942 /* ViewController.m in Sources */,
 				24ED72AB1BED5E4500683497 /* QuestionViewController.m in Sources */,
