@@ -20,9 +20,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSLog(@"loaded QuestionViewController and currently evaluating %@", self.currentResidentName);
+    self.currentResidentArray = [[NSMutableArray alloc] init];
     self.writtenEvaluation.delegate = self;
     self.MilestoneSlider.continuous = YES;
     self.writtenEvaluation.hidden = YES;
+    self.submitButton.hidden = YES;
     self.numberMilestonesCompleted = 0;
     self.competencyIndex = 0;
     self.competencyName.numberOfLines = 0;
@@ -128,9 +131,14 @@
         
         NSLog(@"milestoneEvals %@", self.milestoneEvaluations);
         
+        //use this array for PFObject
+        self.currentResidentArray = self.milestoneEvaluations;
+        [self.currentResidentArray addObject:self.currentResidentName];
+        [self.currentResidentArray addObject:self.shiftDate];
         
         //hide next button and segue to finished screen
-        self.MilestoneNextButton.hidden = YES;
+        [self performSegueWithIdentifier:@"evalSubmitted" sender:self];
+
         
     }
     else if (self.numberMilestonesCompleted == 11){
@@ -141,6 +149,9 @@
         self.writtenEvaluation.hidden = NO;
         [self.competencyName setText:Competencies[11][0]];
         self.competencyIndex++;
+        self.MilestoneNextButton.hidden = YES;
+        self.submitButton.hidden = NO;
+
     }
     
     else if (self.numberMilestonesCompleted <11){
@@ -182,8 +193,11 @@
             self.MilestoneDescription.hidden = NO;
             self.MilestoneSlider.hidden = NO;
             self.writtenEvaluation.hidden = YES;
+            self.submitButton.hidden = YES;
+            self.MilestoneNextButton.hidden = NO;
             [self.milestoneEvaluations removeLastObject];
             //self.numberMilestonesCompleted --;
+            
         }
         else if (self.numberMilestonesCompleted == 11){
             self.MilestoneDescription.hidden = NO;
@@ -218,6 +232,34 @@
     [textField resignFirstResponder];
     
     return YES;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if([[segue identifier]  isEqualToString:@"backToResidentList"]){
+        [self.residentsToEvaluate addObject:self.currentResidentName];
+        ResidentListTableViewController *residentTable = [segue destinationViewController];
+        residentTable.residentQRList = [[NSMutableArray alloc] initWithArray:self.residentsToEvaluate];
+        residentTable.shiftDate = [[NSString alloc] initWithString:self.shiftDate];
+    }
+    
+    if([[segue identifier] isEqualToString:@"evalSubmitted"]){
+        
+        NSLog(@"eval submitted. %i residents left", (int)self.residentsToEvaluate.count);
+        if (self.residentsToEvaluate.count != 0){
+            // Loop to list of residents until all evaluated
+            ResidentListTableViewController *residentTable = [segue destinationViewController];
+            residentTable.residentQRList = [[NSMutableArray alloc] initWithArray:self.residentsToEvaluate];
+            residentTable.shiftDate = [[NSString alloc] initWithString:self.shiftDate];
+            
+            // use self.currentResidentArray for PFObject
+        }
+        else{
+            // Evals complete. Restart app.
+            UIViewController *viewController = [segue destinationViewController];
+            
+        }
+    }
 }
 
 
