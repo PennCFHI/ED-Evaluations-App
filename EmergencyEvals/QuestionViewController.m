@@ -38,8 +38,6 @@
     [self.competencyName sizeToFit];
     [self.competencyName setText:Competencies[self.competencyIndex][0]];
     [self.MilestoneDescription setText:Competencies[self.competencyIndex][1]];
-//    [self.MilestoneDescription sizeToFit];
-    
     // Define array with default values of 1: "Unable to Assess"
     self.milestoneEvaluations = [[NSMutableArray alloc] init];
     for (int i=0; i<11; i++){
@@ -109,7 +107,7 @@
     // Round slider value and change description text based on selected milestone
     [self.MilestoneSlider setValue:[self roundSliderValue:self.MilestoneSlider.value] animated:NO];
     [self.MilestoneDescription setText: Competencies[self.competencyIndex][ (int)self.MilestoneSlider.value] ];
-
+    
     // Update array with new milestone
     NSNumber *milestoneValue = [NSNumber numberWithInt:((int)self.MilestoneSlider.value)];
     [self.milestoneEvaluations replaceObjectAtIndex:(self.competencyIndex) withObject:milestoneValue];
