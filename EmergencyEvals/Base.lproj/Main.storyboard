@@ -168,22 +168,14 @@
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ys1-P1-Dxf">
-                                <rect key="frame" x="38" y="51" width="245" height="21"/>
+                                <rect key="frame" x="38" y="51" width="245" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4OK-rY-Q1h">
-                                <rect key="frame" x="38" y="130" width="245" height="160"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Write here..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JdG-ag-9bS">
-                                <rect key="frame" x="38" y="130" width="245" height="189"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write here..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JdG-ag-9bS">
+                                <rect key="frame" x="38" y="130" width="245" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
@@ -199,23 +191,30 @@
                                     <action selector="nextMilestone:" destination="eVV-MX-wgp" eventType="touchUpInside" id="pLX-E3-Aql"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4OK-rY-Q1h">
+                                <rect key="frame" x="38" y="130" width="245" height="160"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="8Ma-0x-Ude" secondAttribute="trailing" id="0XB-2z-BbO"/>
+                            <constraint firstItem="JdG-ag-9bS" firstAttribute="top" secondItem="Ys1-P1-Dxf" secondAttribute="bottom" constant="58.5" id="4c8-vZ-unw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4OK-rY-Q1h" secondAttribute="trailing" constant="21" id="6au-UL-63l"/>
                             <constraint firstItem="WRm-CF-tID" firstAttribute="top" secondItem="fNb-DS-Hdq" secondAttribute="bottom" constant="20" id="6f0-ca-tLD"/>
                             <constraint firstItem="Ys1-P1-Dxf" firstAttribute="top" secondItem="PtM-Lu-P3N" secondAttribute="bottom" constant="31" id="AbR-7L-VkW"/>
                             <constraint firstItem="WRm-CF-tID" firstAttribute="top" secondItem="4OK-rY-Q1h" secondAttribute="bottom" constant="278" id="G3s-T6-rfI"/>
                             <constraint firstItem="8Ma-0x-Ude" firstAttribute="leading" secondItem="fNb-DS-Hdq" secondAttribute="trailing" constant="204" id="Hoh-uB-EmF"/>
-                            <constraint firstItem="WRm-CF-tID" firstAttribute="top" secondItem="JdG-ag-9bS" secondAttribute="bottom" constant="249" id="Hoj-4b-XP0"/>
                             <constraint firstItem="WRm-CF-tID" firstAttribute="top" secondItem="8Ma-0x-Ude" secondAttribute="bottom" constant="20" id="MMb-He-hhM"/>
                             <constraint firstItem="4OK-rY-Q1h" firstAttribute="leading" secondItem="pr5-oW-DDv" secondAttribute="leadingMargin" constant="22" id="P2i-c4-pKd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ys1-P1-Dxf" secondAttribute="trailing" constant="21" id="WFp-gR-pbd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JdG-ag-9bS" secondAttribute="trailing" constant="21" id="YqE-yu-gtc"/>
                             <constraint firstItem="JEy-wo-YZL" firstAttribute="leading" secondItem="pr5-oW-DDv" secondAttribute="leadingMargin" constant="62" id="YyK-x8-C5g"/>
-                            <constraint firstItem="JdG-ag-9bS" firstAttribute="top" secondItem="PtM-Lu-P3N" secondAttribute="bottom" constant="110" id="bT0-xg-vFZ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="fNb-DS-Hdq" secondAttribute="leading" id="dRR-fM-ySx"/>
                             <constraint firstItem="4OK-rY-Q1h" firstAttribute="top" secondItem="PtM-Lu-P3N" secondAttribute="bottom" constant="110" id="erI-qM-xQI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JEy-wo-YZL" secondAttribute="trailing" constant="62" id="mMS-gO-26r"/>

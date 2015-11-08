@@ -38,6 +38,7 @@
     [self.competencyName sizeToFit];
     [self.competencyName setText:Competencies[self.competencyIndex][0]];
     [self.MilestoneDescription setText:Competencies[self.competencyIndex][1]];
+//    [self.MilestoneDescription sizeToFit];
     
     // Define array with default values of 1: "Unable to Assess"
     self.milestoneEvaluations = [[NSMutableArray alloc] init];
