@@ -67,6 +67,7 @@
         evalForm.currentResidentName = [[NSString alloc] initWithString:self.currentResidentName];
         evalForm.shiftDate = [[NSString alloc] initWithString:self.shiftDate];
     }
+    
 }
     
 
