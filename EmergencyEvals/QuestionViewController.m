@@ -20,17 +20,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSLog(@"loaded QuestionViewController and currently evaluating %@", self.currentResidentName);
+
+    // Set up counters and variables
+    self.currentResidentArray = [[NSMutableArray alloc] init];
+    self.numberMilestonesCompleted = 0;
+    self.competencyIndex = 0;
+    
+    // Set up UI
+    [self.writtenEvaluation sizeToFit];
     self.writtenEvaluation.delegate = self;
     self.MilestoneSlider.continuous = YES;
     self.writtenEvaluation.hidden = YES;
-    self.numberMilestonesCompleted = 0;
-    self.competencyIndex = 0;
+    self.previousButton.hidden = YES;
     self.competencyName.numberOfLines = 0;
     self.competencyName.lineBreakMode = NSLineBreakByWordWrapping;
     [self.competencyName sizeToFit];
     [self.competencyName setText:Competencies[self.competencyIndex][0]];
     [self.MilestoneDescription setText:Competencies[self.competencyIndex][1]];
-    
+    // Define array with default values of 1: "Unable to Assess"
     self.milestoneEvaluations = [[NSMutableArray alloc] init];
     for (int i=0; i<11; i++){
         [self.milestoneEvaluations addObject:([NSNumber numberWithInt:1]) ];
@@ -55,6 +63,8 @@
  */
 
 -(int)roundSliderValue:(float)x {
+    
+    // Rounds slider value to nearest int
     if (x < 2.0) {
         return 1;
     }
@@ -94,47 +104,57 @@
 
 - (IBAction)changed:(UISlider *)sender {
     
-    //round slider value and change milestone text
+    // Round slider value and change description text based on selected milestone
     [self.MilestoneSlider setValue:[self roundSliderValue:self.MilestoneSlider.value] animated:NO];
     [self.MilestoneDescription setText: Competencies[self.competencyIndex][ (int)self.MilestoneSlider.value] ];
     
+    // Update array with new milestone
     NSNumber *milestoneValue = [NSNumber numberWithInt:((int)self.MilestoneSlider.value)];
     [self.milestoneEvaluations replaceObjectAtIndex:(self.competencyIndex) withObject:milestoneValue];
-    
-    //NSLog(@"%@", Competencies[0]);
-    //NSLog(@"milestoneslider value is %f", self.MilestoneSlider.value);
-    //NSLog(@"currentComp %i", self.competencyIndex);
-    
 }
 
 - (IBAction)nextMilestone:(id)sender {
-    //NSLog(@"Milestone Slider Value %f", self.MilestoneSlider.value);
-    //NSLog(@"numCompleted before: %i", self.numberMilestonesCompleted);
-    //NSLog(@"milestoneEvals %@", self.milestoneEvaluations);
-    //record evaluation number in array
-    NSLog(@"self.competencyIndex %i", self.competencyIndex);
-    
     //11 slider competencies, 12th competency is text
-    
+
+    NSLog(@"milestone evals array %@", self.milestoneEvaluations);
+   
+
+    self.previousButton.hidden = NO;
     self.numberMilestonesCompleted ++;
-    
+    NSLog(@"next clicked. currently at self.competencyIndex %i. completed %i milestones", self.competencyIndex, self.numberMilestonesCompleted);
+
     if (self.numberMilestonesCompleted == 12){
-        //DONE!
-        //take written value and add it into end of array. then, evaluation is finished
+        // Done with evaluation form
+        // Take written value and add it into end of array. Then, evaluation is finished --> segue
         NSString *writtenValue = [NSString stringWithString:(self.writtenEvaluation.text)];
         [self.milestoneEvaluations addObject:writtenValue];
-        [self.competencyName setText:(@"Evaluations Complete. Thank you!")];
         self.writtenEvaluation.hidden = YES;
         
-        NSLog(@"milestoneEvals %@", self.milestoneEvaluations);
+        // Final array with name and date added
+        self.currentResidentArray = self.milestoneEvaluations;
+        [self.currentResidentArray addObject:self.currentResidentName];
+        [self.currentResidentArray addObject:self.shiftDate];
+        NSLog(@"Final array %@", self.currentResidentArray);
         
-        
-        //hide next button and segue to finished screen
-        self.MilestoneNextButton.hidden = YES;
+        // If more residents left to evaluate, segue to table
+        // Otherwise, segue to main screen
+        if (self.residentsToEvaluate.count == 0){
+            [self performSegueWithIdentifier:@"segueToMain" sender:self];
+        }
+        else{
+            [self performSegueWithIdentifier:@"backToResidentList" sender:self];
+        }
+
         
     }
     else if (self.numberMilestonesCompleted == 11){
-        //prepare for written evaluation
+        // Finished with slider competencies
+        
+        // Rename Next button -> Submit
+        [self.MilestoneNextButton setTitle:@"Submit" forState:UIControlStateNormal];
+        [self.MilestoneNextButton sizeToFit];
+        
+        // Prepare for textbox feedback
         [self.writtenEvaluation becomeFirstResponder];
         self.MilestoneDescription.hidden = YES;
         self.MilestoneSlider.hidden = YES;
@@ -144,65 +164,69 @@
     }
     
     else if (self.numberMilestonesCompleted <11){
+        // All slider competencies not yet completed -> Go to next slider competency
         
-        //loop to next competency if all 11 not yet completed
-        //reset label and description values for next competency
+        // Reset label value for next competency
         self.competencyIndex++;
-        
-        NSLog(@"array competency index %i", self.competencyIndex);
-        
         [self.competencyName setText:Competencies[self.competencyIndex][0]];
         
-        //if user already set value for this competency, slider set to previously entered value; otherwise set to 1
-        //if under 10 completed, set values
+        // Reset slider value:
+        // If user already set value for this competency, slider set to previously entered value
+        // Otherwise set to 1
         if (((int)self.milestoneEvaluations[self.competencyIndex] != 1)){
             [self.MilestoneSlider setValue:[self.milestoneEvaluations[self.competencyIndex] floatValue]];
         }
         else [self.MilestoneSlider setValue:1];
         
-        //reset milestone description
+        // Reset milestone description
         [self.MilestoneDescription setText:Competencies[self.competencyIndex][(int)self.MilestoneSlider.value]];
         
     }
     
-    NSLog(@"milestoneEvals %@", self.milestoneEvaluations);
-    NSLog (@"number milestones completed %i", self.numberMilestonesCompleted);
-    NSLog (@"competencyIndex %i is %@", self.competencyIndex, Competencies[self.competencyIndex][0]);
 }
 
 
 - (IBAction)pressBack:(id)sender {
     
     if (self.numberMilestonesCompleted == 0){
-        //go back to previous screen
+        //do nothing
     }
     else{
+        // Not on first competency -> show back button
+        self.previousButton.hidden = NO;
+
+/*
+        // Can add this back later if we allow user to edit textbox after submission
         if (self.numberMilestonesCompleted == 12){
-            //remove textbox
             self.MilestoneDescription.hidden = NO;
             self.MilestoneSlider.hidden = NO;
             self.writtenEvaluation.hidden = YES;
             [self.milestoneEvaluations removeLastObject];
             //self.numberMilestonesCompleted --;
+            
         }
-        else if (self.numberMilestonesCompleted == 11){
+*/
+
+        if (self.numberMilestonesCompleted == 11){
+            // Going from textbox competency -> slider competency
+            [self.MilestoneNextButton setTitle:@"Next" forState:UIControlStateNormal];
             self.MilestoneDescription.hidden = NO;
             self.MilestoneSlider.hidden = NO;
             self.writtenEvaluation.hidden = YES;
         }
         
-        
-        //restore previous values
+        // Restore previous values of label, description, and slider value
         self.competencyIndex --;
         self.numberMilestonesCompleted --;
         float prevMilestoneEval = [self.milestoneEvaluations[self.competencyIndex] floatValue];
         [self.MilestoneSlider setValue:prevMilestoneEval];
         [self.competencyName setText:Competencies[self.competencyIndex][0]];
         [self.MilestoneDescription setText:Competencies[self.competencyIndex][(int)prevMilestoneEval]];
-        
-        NSLog (@"number milestones completed %i", self.numberMilestonesCompleted);
-        NSLog (@"competencyIndex %i is %@", self.competencyIndex, Competencies[self.competencyIndex][0]);
-        
+    }
+    
+    if (self.numberMilestonesCompleted == 0){
+        // If evaluating first competency -> hide back button
+        self.previousButton.hidden = YES;
     }
 }
 
@@ -214,12 +238,27 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    
+    //return button closes keyboard
     [textField resignFirstResponder];
-    
     return YES;
 }
 
-
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    NSLog(@"residents left to evaluate: %@", self.residentsToEvaluate);
+    
+    if([[segue identifier]  isEqualToString:@"segueToMain"]){
+        NSLog(@"eval Submitted --> segue to viewController");
+        UIViewController *viewController = [segue destinationViewController];
+    }
+    
+    if([[segue identifier] isEqualToString:@"backToResidentList"]){
+        NSLog(@"eval Submitted -> segue to ResidentList to evaluate more residents");
+        ResidentListTableViewController *residentTable = segue.destinationViewController;
+        residentTable.residentQRList = [[NSMutableArray alloc] initWithArray:self.residentsToEvaluate];
+        residentTable.shiftDate = [[NSString alloc] initWithString:self.shiftDate];
+    }
+    
+}
 
 @end
