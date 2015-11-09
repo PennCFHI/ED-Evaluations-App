@@ -136,6 +136,29 @@
         [self.currentResidentArray addObject:self.shiftDate];
         NSLog(@"Final array %@", self.currentResidentArray);
         
+        //send array to Parse as PFObject EvaluationData
+        PFObject *evaluationData = [PFObject objectWithClassName:@"EvaluationData"];
+        evaluationData[@"Emergency_Stabilization"] = _currentResidentArray[0];
+        evaluationData[@"History_and_Physical"] = _currentResidentArray[1];
+        evaluationData[@"Diagnostic_Studies"] = _currentResidentArray[2];
+        evaluationData[@"Diagnosis"] =_currentResidentArray[3];
+        evaluationData[@"Pharmacotherapy"] =_currentResidentArray[4];
+        evaluationData[@"Observation_and_Reassessment"] = _currentResidentArray[5];
+        evaluationData[@"Disposition"] = _currentResidentArray[6];
+        evaluationData[@"Multitasking"] = _currentResidentArray[7];
+        evaluationData[@"General_Approach"] = _currentResidentArray[8];
+        evaluationData[@"Anesthesia_AcutePain"] =_currentResidentArray[9];
+        evaluationData[@"Team_Management"] = _currentResidentArray[10];
+        evaluationData[@"Written_Feedback"] = _currentResidentArray[11];
+        [evaluationData saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                NSLog(@"evaluation has been saved");
+            } else {
+                NSLog(@"error has occured when trying to save Evaluation Data");
+            }
+        }];
+
+        
         // If more residents left to evaluate, segue to table
         // Otherwise, segue to main screen
         if (self.residentsToEvaluate.count == 0){
