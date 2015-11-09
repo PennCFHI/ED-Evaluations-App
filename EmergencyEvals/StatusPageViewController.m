@@ -23,12 +23,37 @@
     [self.view addSubview:self.startStopButton];
     
     startWasPressed = false;
+    
+    _residentName = [[NSMutableString alloc] init];
+    _residentNames = [[NSMutableArray alloc] init];
 }
 
 -(IBAction)startPressed:(id)sender{
     
     if(startWasPressed == false)
     {
+        
+        
+        for (int i = 0; i < _residentList.count; i++)
+        {
+        //get name from Parse using PennID
+        PFQuery *query = [PFQuery queryWithClassName:@"UserConfirmation"];
+         [query whereKey:@"pennID" equalTo:self.residentList[i]];
+         [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+             if (!object) {
+                    NSLog(@"The getFirstObject request failed.");
+                }
+             else {
+                 // The find succeeded.
+                 NSLog(@"Successfully retrieved the object.");
+                 NSString *nameFromParse = [NSString stringWithFormat:@"%@ %@", [object objectForKey:@"firstName"], [object objectForKey:@"lastName"]];
+             
+                 _residentNames[i] = nameFromParse;
+                 NSLog(@"Resident Names: %@", _residentNames);
+                }
+         }];
+        };
+        
         NSLog(@"start button was pressed");
         
         //store date information
@@ -45,6 +70,7 @@
     else
     {
         [self performSegueWithIdentifier:@"statusToTable" sender:self];
+        NSLog(@"resident names: %@", _residentNames);
         startWasPressed = false; 
     }
     
@@ -58,6 +84,7 @@
         
         ResidentListTableViewController *residentTable = [segue destinationViewController];
         residentTable.residentQRList = [[NSMutableArray alloc] initWithArray:self.residentList];
+        residentTable.residentNames = [[NSMutableArray alloc] initWithArray:self.residentNames];
         residentTable.shiftDate = [[NSString alloc] initWithString:self.shiftDate];
         NSLog(@"QR List to populate table: %@", residentTable.residentQRList);
         NSLog(@"date to transfer to table: %@", residentTable.shiftDate);
