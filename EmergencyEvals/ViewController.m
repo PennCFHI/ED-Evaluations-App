@@ -125,7 +125,7 @@
     [self.showQRCodeButton addTarget:self action:@selector(showQR:) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:self.showQRCodeButton];
     
-    
+    [self.navigationItem setHidesBackButton:YES];
     
     
 }

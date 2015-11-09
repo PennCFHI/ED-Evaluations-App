@@ -23,6 +23,7 @@
     self.currentResidentName = nil;
     //setup residentTableView
     self.residentsToEvaluate = self.residentQRList;
+    [self.navigationItem setHidesBackButton:YES];
     [self.residentTable reloadData];
 
     

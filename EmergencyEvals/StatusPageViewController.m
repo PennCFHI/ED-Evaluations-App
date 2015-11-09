@@ -45,10 +45,11 @@
                 }
              else {
                  // The find succeeded.
-                 NSLog(@"Successfully retrieved the object.");
+               
                  NSString *nameFromParse = [NSString stringWithFormat:@"%@ %@", [object objectForKey:@"firstName"], [object objectForKey:@"lastName"]];
-             
-                 _residentNames[i] = nameFromParse;
+               NSLog(@"Successfully retrieved the object: %@", nameFromParse);
+                 [_residentNames addObject:nameFromParse];
+//                 _residentNames[i] = nameFromParse;
                  NSLog(@"Resident Names: %@", _residentNames);
                 }
          }];
@@ -59,7 +60,6 @@
         //store date information
         NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-        NSLog(@"%@",[dateFormatter stringFromDate:[NSDate date]]);
         self.shiftDate = [dateFormatter stringFromDate:[NSDate date]];
         
         //change button properties to Stop

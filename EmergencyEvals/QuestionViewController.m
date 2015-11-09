@@ -44,6 +44,9 @@
         [self.milestoneEvaluations addObject:([NSNumber numberWithInt:1]) ];
     }
     
+    //hide back button
+    [self.navigationItem setHidesBackButton:YES];
+    
     NSLog (@"competencyIndex %i is %@", self.competencyIndex, Competencies[self.competencyIndex][0]);
 }
 
@@ -176,9 +179,9 @@
         // Finished with slider competencies
         
         // Rename Next button -> Submit
-        [self.MilestoneNextButton setTitle:@"Submit" forState:UIControlStateNormal];
-        [self.MilestoneNextButton sizeToFit];
-        
+        //[self.MilestoneNextButton setTitle:@"Submit" forState:UIControlStateNormal];
+        //[self.MilestoneNextButton sizeToFit];
+        self.MilestoneNextButton.hidden = YES;
         // Prepare for textbox feedback
         [self.writtenEvaluation becomeFirstResponder];
         self.MilestoneDescription.hidden = YES;
@@ -186,6 +189,13 @@
         self.writtenEvaluation.hidden = NO;
         [self.competencyName setText:Competencies[11][0]];
         self.competencyIndex++;
+        
+        UIBarButtonItem *continueButton = [[UIBarButtonItem alloc]
+                                           initWithTitle:@"Submit"
+                                           style:UIBarButtonItemStyleDone
+                                           target:self
+                                           action:@selector(nextMilestone:)];
+        self.navigationItem.rightBarButtonItem = continueButton;
     }
     
     else if (self.numberMilestonesCompleted <11){
@@ -234,10 +244,10 @@
 
         if (self.numberMilestonesCompleted == 11){
             // Going from textbox competency -> slider competency
-            [self.MilestoneNextButton setTitle:@"Next" forState:UIControlStateNormal];
             self.MilestoneDescription.hidden = NO;
             self.MilestoneSlider.hidden = NO;
             self.writtenEvaluation.hidden = YES;
+            self.MilestoneNextButton.hidden = NO;
         }
         
         // Restore previous values of label, description, and slider value
