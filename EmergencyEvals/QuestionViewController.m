@@ -282,6 +282,7 @@
         ResidentListTableViewController *residentTable = segue.destinationViewController;
         residentTable.residentQRList = [[NSMutableArray alloc] initWithArray:self.residentsToEvaluate];
         residentTable.shiftDate = [[NSString alloc] initWithString:self.shiftDate];
+        residentTable.residentNames = [[NSMutableArray alloc] initWithArray:self.residentNames];
     }
     
 }

@@ -55,6 +55,7 @@
     
     self.currentResidentName = [self.residentsToEvaluate objectAtIndex:indexPath.row];
     [self.residentsToEvaluate removeObjectAtIndex:indexPath.row];
+    [self.residentNames removeObjectAtIndex:indexPath.row];
     NSLog(@"selected cell: %i, %@", (int)indexPath.row, self.currentResidentName);
     [self performSegueWithIdentifier:@"segueToEval" sender:self];
 }
@@ -69,6 +70,7 @@
         evalForm.residentsToEvaluate = [[NSMutableArray alloc] initWithArray:self.residentsToEvaluate];
         evalForm.currentResidentName = [[NSString alloc] initWithString:self.currentResidentName];
         evalForm.shiftDate = [[NSString alloc] initWithString:self.shiftDate];
+        evalForm.residentNames = [[NSMutableArray alloc] initWithArray:self.residentNames];
     }
     
 }
