@@ -57,10 +57,6 @@
         
         NSLog(@"start button was pressed");
         
-        //store date information
-        NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-        self.shiftDate = [dateFormatter stringFromDate:[NSDate date]];
         
         //change button properties to Stop
         [self.startStopButton setTitle:@"Stop Shift" forState:UIControlStateNormal];
@@ -69,9 +65,15 @@
     }
     else
     {
-        [self performSegueWithIdentifier:@"statusToTable" sender:self];
-        NSLog(@"resident names: %@", _residentNames);
-        startWasPressed = false; 
+        
+        
+        UIAlertView *theAlert = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to end your shift?"
+                                                           message:@"You will not be able to add any more residents once your shift has ended."
+                                                          delegate:self
+                                                 cancelButtonTitle:@"Cancel"
+                                                 otherButtonTitles:@"End Shift", nil];
+        [theAlert show];
+        
     }
     
 }
@@ -83,12 +85,26 @@
         
         
         ResidentListTableViewController *residentTable = [segue destinationViewController];
+     
         residentTable.residentQRList = [[NSMutableArray alloc] initWithArray:self.residentList];
+       
         residentTable.residentNames = [[NSMutableArray alloc] initWithArray:self.residentNames];
-        residentTable.shiftDate = [[NSString alloc] initWithString:self.shiftDate];
         NSLog(@"QR List to populate table: %@", residentTable.residentQRList);
-        NSLog(@"date to transfer to table: %@", residentTable.shiftDate);
+    
     }
     
 }
+
+
+- (void)alertView:(UIAlertView *)theAlert clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+        if (buttonIndex == 1) {
+   
+            [self performSegueWithIdentifier:@"statusToTable" sender:self];
+            startWasPressed = false;
+        }
+        
+    
+}
+
 @end
