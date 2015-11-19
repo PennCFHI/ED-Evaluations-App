@@ -16,6 +16,8 @@ BOOL startWasPressed;
 
 @property (strong, nonatomic) UIButton *startStopButton; //sender in tutorial code
 @property (strong, nonatomic) NSMutableArray *residentList;
+@property (strong, nonatomic) NSMutableString *residentName;
+@property (strong, nonatomic) NSMutableArray *residentNames;
 @property (strong, nonatomic) NSString *shiftDate;
 
 

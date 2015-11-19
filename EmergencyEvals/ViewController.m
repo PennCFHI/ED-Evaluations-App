@@ -17,10 +17,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.testLabel = [[UILabel alloc] initWithFrame: CGRectMake((self.view.frame.size.width - 200)/2,
+   /* self.testLabel = [[UILabel alloc] initWithFrame: CGRectMake((self.view.frame.size.width - 200)/2,
                                                                 (self.view.frame.size.height * 1/8) + 100,
                                                                 200,
-                                                                50)];
+                                                                50)];*/
     
     /*if ([PFUser currentUser]) {
         self.testLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Welcome %@!", nil), [[PFUser currentUser] username]];
@@ -125,7 +125,7 @@
     [self.showQRCodeButton addTarget:self action:@selector(showQR:) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:self.showQRCodeButton];
     
-    
+    [self.navigationItem setHidesBackButton:YES];
     
     
 }

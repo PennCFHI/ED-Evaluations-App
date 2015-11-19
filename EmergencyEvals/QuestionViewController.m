@@ -44,6 +44,9 @@
         [self.milestoneEvaluations addObject:([NSNumber numberWithInt:1]) ];
     }
     
+    //hide back button
+    [self.navigationItem setHidesBackButton:YES];
+    
     NSLog (@"competencyIndex %i is %@", self.competencyIndex, Competencies[self.competencyIndex][0]);
 }
 
@@ -136,6 +139,31 @@
         [self.currentResidentArray addObject:self.shiftDate];
         NSLog(@"Final array %@", self.currentResidentArray);
         
+        //send array to Parse as PFObject EvaluationData
+        PFObject *evaluationData = [PFObject objectWithClassName:@"EvaluationData"];
+        evaluationData[@"Attending"] = [[PFUser currentUser] objectForKey:@"PennID"];
+        evaluationData[@"Resident"] = self.currentResidentName;
+        evaluationData[@"Emergency_Stabilization"] = _currentResidentArray[0];
+        evaluationData[@"History_and_Physical"] = _currentResidentArray[1];
+        evaluationData[@"Diagnostic_Studies"] = _currentResidentArray[2];
+        evaluationData[@"Diagnosis"] =_currentResidentArray[3];
+        evaluationData[@"Pharmacotherapy"] =_currentResidentArray[4];
+        evaluationData[@"Observation_and_Reassessment"] = _currentResidentArray[5];
+        evaluationData[@"Disposition"] = _currentResidentArray[6];
+        evaluationData[@"Multitasking"] = _currentResidentArray[7];
+        evaluationData[@"General_Approach"] = _currentResidentArray[8];
+        evaluationData[@"Anesthesia_AcutePain"] =_currentResidentArray[9];
+        evaluationData[@"Team_Management"] = _currentResidentArray[10];
+        evaluationData[@"Written_Feedback"] = _currentResidentArray[11];
+        [evaluationData saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                NSLog(@"evaluation has been saved");
+            } else {
+                NSLog(@"error has occured when trying to save Evaluation Data");
+            }
+        }];
+
+        
         // If more residents left to evaluate, segue to table
         // Otherwise, segue to main screen
         if (self.residentsToEvaluate.count == 0){
@@ -151,9 +179,9 @@
         // Finished with slider competencies
         
         // Rename Next button -> Submit
-        [self.MilestoneNextButton setTitle:@"Submit" forState:UIControlStateNormal];
-        [self.MilestoneNextButton sizeToFit];
-        
+        //[self.MilestoneNextButton setTitle:@"Submit" forState:UIControlStateNormal];
+        //[self.MilestoneNextButton sizeToFit];
+        self.MilestoneNextButton.hidden = YES;
         // Prepare for textbox feedback
         [self.writtenEvaluation becomeFirstResponder];
         self.MilestoneDescription.hidden = YES;
@@ -161,6 +189,13 @@
         self.writtenEvaluation.hidden = NO;
         [self.competencyName setText:Competencies[11][0]];
         self.competencyIndex++;
+        
+        UIBarButtonItem *continueButton = [[UIBarButtonItem alloc]
+                                           initWithTitle:@"Submit"
+                                           style:UIBarButtonItemStyleDone
+                                           target:self
+                                           action:@selector(nextMilestone:)];
+        self.navigationItem.rightBarButtonItem = continueButton;
     }
     
     else if (self.numberMilestonesCompleted <11){
@@ -209,10 +244,10 @@
 
         if (self.numberMilestonesCompleted == 11){
             // Going from textbox competency -> slider competency
-            [self.MilestoneNextButton setTitle:@"Next" forState:UIControlStateNormal];
             self.MilestoneDescription.hidden = NO;
             self.MilestoneSlider.hidden = NO;
             self.writtenEvaluation.hidden = YES;
+            self.MilestoneNextButton.hidden = NO;
         }
         
         // Restore previous values of label, description, and slider value
@@ -257,6 +292,7 @@
         ResidentListTableViewController *residentTable = segue.destinationViewController;
         residentTable.residentQRList = [[NSMutableArray alloc] initWithArray:self.residentsToEvaluate];
         residentTable.shiftDate = [[NSString alloc] initWithString:self.shiftDate];
+        residentTable.residentNames = [[NSMutableArray alloc] initWithArray:self.residentNames];
     }
     
 }

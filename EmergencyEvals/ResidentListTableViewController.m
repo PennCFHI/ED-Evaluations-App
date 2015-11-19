@@ -22,8 +22,8 @@
     [super viewDidLoad];
     self.currentResidentName = nil;
     //setup residentTableView
-    NSArray *residentsToEvaluate;
     self.residentsToEvaluate = self.residentQRList;
+    [self.navigationItem setHidesBackButton:YES];
     [self.residentTable reloadData];
 
     
@@ -35,16 +35,20 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"populating row %i with name %@", (int)indexPath.row, self.residentsToEvaluate[indexPath.row]);
-    
+    NSLog(@"populating row %i with name %@", (int)indexPath.row, self.residentNames[indexPath.row]);
+    NSMutableString *residentName;
     // Create resident cell
     UITableViewCell *cell = [tableView
                              dequeueReusableCellWithIdentifier:@"residentCell"
                              forIndexPath:indexPath];
     
+    
+    
+
     // Configure cell
-    NSString *residentName = [self.residentsToEvaluate objectAtIndex:indexPath.row];
+    residentName = [self.residentNames objectAtIndex:indexPath.row];
     cell.textLabel.text = residentName;
+    NSLog(@"resident name is: %@", residentName);
     return cell;
 }
 
@@ -52,6 +56,7 @@
     
     self.currentResidentName = [self.residentsToEvaluate objectAtIndex:indexPath.row];
     [self.residentsToEvaluate removeObjectAtIndex:indexPath.row];
+    [self.residentNames removeObjectAtIndex:indexPath.row];
     NSLog(@"selected cell: %i, %@", (int)indexPath.row, self.currentResidentName);
     [self performSegueWithIdentifier:@"segueToEval" sender:self];
 }
@@ -66,6 +71,7 @@
         evalForm.residentsToEvaluate = [[NSMutableArray alloc] initWithArray:self.residentsToEvaluate];
         evalForm.currentResidentName = [[NSString alloc] initWithString:self.currentResidentName];
         evalForm.shiftDate = [[NSString alloc] initWithString:self.shiftDate];
+        evalForm.residentNames = [[NSMutableArray alloc] initWithArray:self.residentNames];
     }
     
 }

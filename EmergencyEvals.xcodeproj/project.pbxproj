@@ -200,11 +200,11 @@
 				3EDA08941BEE44BB00413EB0 /* ResidentListTableViewController.h */,
 				3EDA08951BEE44BB00413EB0 /* ResidentListTableViewController.m */,
 				3E2840481BDBE257005DC942 /* ViewController.h */,
+				3E2840491BDBE257005DC942 /* ViewController.m */,
 				24ED72A61BED5E4500683497 /* Globals.h */,
 				24ED72A71BED5E4500683497 /* Globals.m */,
 				24ED72A81BED5E4500683497 /* QuestionViewController.h */,
 				24ED72A91BED5E4500683497 /* QuestionViewController.m */,
-				3E2840491BDBE257005DC942 /* ViewController.m */,
 				3EC9AE741BE51AAB009292D4 /* QRScannerViewController.h */,
 				3EC9AE751BE51AAB009292D4 /* QRScannerViewController.m */,
 				3E93240C1BE85A21005DD5EB /* StatusPageViewController.h */,
@@ -294,7 +294,7 @@
 				ORGANIZATIONNAME = poloclub;
 				TargetAttributes = {
 					3E28402F1BDBE256005DC942 = {
-						DevelopmentTeam = 7BCZQ3RHUT;
+						DevelopmentTeam = C2SJ47B8Q7;
 					};
 					3E2840501BDBE257005DC942 = {
 						TestTargetID = 3E28402F1BDBE256005DC942;

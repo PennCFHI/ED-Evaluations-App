@@ -28,6 +28,7 @@
 @property (strong, nonatomic) NSMutableArray *residentsToEvaluate;
 @property (strong, nonatomic) NSString *currentResidentName;
 @property (strong, nonatomic) NSString *shiftDate;
+@property (strong, nonatomic) NSMutableArray *residentNames;
 
 -(IBAction)changed:(id)sender;
 -(int)roundSliderValue:(float)x;
