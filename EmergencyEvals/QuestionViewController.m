@@ -22,6 +22,14 @@
     // Do any additional setup after loading the view.
     NSLog(@"loaded QuestionViewController and currently evaluating %@", self.currentResidentName);
 
+    /*
+    // Set up tickbars
+    self.tickbar = [[UIImageView alloc] initWithFrame:CGRectMake(self.MilestoneSlider.frame.origin.x,
+                                                                 self.MilestoneSlider.frame.origin.y, self.MilestoneSlider.frame.size.width, self.MilestoneSlider.frame.size.height)];
+    [self.tickbar setImage:[UIImage imageNamed:@"tickbar.png"]];
+    [self.view addSubview:self.tickbar]; 
+     */
+                    
     // Set up counters and variables
     self.currentResidentArray = [[NSMutableArray alloc] init];
     self.numberMilestonesCompleted = 0;
@@ -38,11 +46,15 @@
     [self.competencyName sizeToFit];
     [self.competencyName setText:Competencies[self.competencyIndex][0]];
     [self.MilestoneDescription setText:Competencies[self.competencyIndex][1]];
+    [self.progressLabel setText:[NSString stringWithFormat:@"%i/12", (self.numberMilestonesCompleted+1)]];
+    
+    
     // Define array with default values of 1: "Unable to Assess"
     self.milestoneEvaluations = [[NSMutableArray alloc] init];
     for (int i=0; i<11; i++){
         [self.milestoneEvaluations addObject:([NSNumber numberWithInt:1]) ];
     }
+    
     
     //hide back button
     [self.navigationItem setHidesBackButton:YES];
@@ -217,11 +229,15 @@
         [self.MilestoneDescription setText:Competencies[self.competencyIndex][(int)self.MilestoneSlider.value]];
         
     }
+
+    [self.progressLabel setText:[NSString stringWithFormat:@"%i/12", (self.numberMilestonesCompleted+1)]];
+
     
 }
 
 
 - (IBAction)pressBack:(id)sender {
+    
     
     if (self.numberMilestonesCompleted == 0){
         //do nothing
@@ -263,6 +279,9 @@
         // If evaluating first competency -> hide back button
         self.previousButton.hidden = YES;
     }
+    
+    [self.progressLabel setText:[NSString stringWithFormat:@"%i/12", (self.numberMilestonesCompleted+1)]];
+    
 }
 
 
