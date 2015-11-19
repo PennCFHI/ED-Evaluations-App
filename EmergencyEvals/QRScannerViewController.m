@@ -8,6 +8,9 @@
 
 #import "QRScannerViewController.h"
 
+//alert view tags
+#define TAG_CONTINUE 1
+
 @implementation QRScannerViewController
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -37,9 +40,12 @@
     
     self.scannerInsructionLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 140, self.scannerFrame.frame.size.width - 34, 21)];
     [self.scannerInsructionLabel setTextColor:[UIColor whiteColor]];
-    [self.scannerInsructionLabel setText:@"Tap on 'Scan' to scan QR Code"];
+    [self.scannerInsructionLabel setNumberOfLines:2];
+    [self.scannerInsructionLabel setText:@"Press 'Scan' to Scan Residents"];
     [self.scannerInsructionLabel setFont:[UIFont systemFontOfSize:15.0]];
     [self.scannerInsructionLabel setTextAlignment: NSTextAlignmentCenter];
+ 
+  
     [self.scannerFrame addSubview:self.scannerInsructionLabel];
     
     
@@ -97,6 +103,14 @@
 
     if (!_residentQRList || !_residentQRList.count){
         NSLog(@"button pressed without scanning");
+        
+        UIAlertView *theAlert = [[UIAlertView alloc] initWithTitle:@"No Residents Scanned!"
+                                                           message:@"Please Scan at least 1 Resident QR before continuting."
+                                                          delegate:self
+                                                 cancelButtonTitle:@"OK"
+                                                 otherButtonTitles:nil];
+        [theAlert show];
+        
     }
     
     else
@@ -104,7 +118,14 @@
  
     NSLog(@"QR Codes Gained: %@", _residentQRList);
     
-    [self performSegueWithIdentifier:@"scanToStatus" sender:self];
+    UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"Are All Residents Scanned?"
+                                                           message:@"If Yes, press 'Continue', otherwise please press 'Cancel' and Scan Again. "
+                                                          delegate:self
+                                                 cancelButtonTitle:@"Cancel"
+                                                 otherButtonTitles:@"Continue", nil];
+    [alert2 show];
+     alert2.tag = TAG_CONTINUE;
+   
         
     NSLog(@"continue button pressed with scanned QR Code ");
     }
@@ -150,7 +171,8 @@
     if (metadataObjects != nil && [metadataObjects count] > 0) {
         AVMetadataMachineReadableCodeObject *metadataObj = [metadataObjects objectAtIndex:0];
         if ([[metadataObj type] isEqualToString:AVMetadataObjectTypeQRCode]) {
-            [_scannerStatus performSelectorOnMainThread:@selector(setText:) withObject:[metadataObj stringValue] waitUntilDone:YES];
+            //[_scannerStatus performSelectorOnMainThread:@selector(setText:) withObject:[metadataObj stringValue] waitUntilDone:YES];
+            [_scannerStatus performSelectorOnMainThread:@selector(setText:) withObject:@"Resident Scanned Successfully!" waitUntilDone:YES];
             //adds data from QR code onto array residentQRList
             [self.residentQRList addObject:[metadataObj stringValue]];
             [self performSelectorOnMainThread:@selector(stopReading) withObject:nil waitUntilDone:NO];
@@ -168,7 +190,7 @@
 -(void)stopReading{
     [_captureSession stopRunning];
     _captureSession = nil;
-     [self.scannerCommand setTitle:@"Start" forState:UIControlStateNormal];
+     [self.scannerCommand setTitle:@"Scan" forState:UIControlStateNormal];
     [_videoPreviewLayer removeFromSuperlayer];
 }
 
@@ -188,6 +210,15 @@
     
 }
 
+- (void)alertView:(UIAlertView *)theAlert clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (theAlert.tag == TAG_CONTINUE) { // handle the altdev
+        if (buttonIndex == 1) {
+             [self performSegueWithIdentifier:@"scanToStatus" sender:self];
+        }
+        
+    }
+}
 
 
 @end
