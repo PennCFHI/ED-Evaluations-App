@@ -30,6 +30,9 @@
 @property (strong, nonatomic) NSString *shiftDate;
 @property (strong, nonatomic) NSMutableArray *residentNames;
 
+@property (strong, nonatomic) UIImageView *tickbar;
+@property (weak, nonatomic) IBOutlet UILabel *progressLabel;
+
 -(IBAction)changed:(id)sender;
 -(int)roundSliderValue:(float)x;
 

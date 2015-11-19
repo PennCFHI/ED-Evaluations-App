@@ -294,7 +294,7 @@
 				ORGANIZATIONNAME = poloclub;
 				TargetAttributes = {
 					3E28402F1BDBE256005DC942 = {
-						DevelopmentTeam = C2SJ47B8Q7;
+						DevelopmentTeam = 7BCZQ3RHUT;
 					};
 					3E2840501BDBE257005DC942 = {
 						TestTargetID = 3E28402F1BDBE256005DC942;
