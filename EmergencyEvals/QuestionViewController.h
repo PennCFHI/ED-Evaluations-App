@@ -12,6 +12,9 @@
 
 @interface QuestionViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *residentNameLabel;
+@property (strong, nonatomic) NSString *residentEvaluated;
+
 @property (weak, nonatomic) IBOutlet UILabel *competencyName;
 @property (weak, nonatomic) IBOutlet UISlider *MilestoneSlider;
 @property (weak, nonatomic) IBOutlet UITextView *MilestoneDescription;

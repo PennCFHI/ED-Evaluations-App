@@ -41,9 +41,6 @@
     UITableViewCell *cell = [tableView
                              dequeueReusableCellWithIdentifier:@"residentCell"
                              forIndexPath:indexPath];
-    
-    
-    
 
     // Configure cell
     residentName = [self.residentNames objectAtIndex:indexPath.row];
@@ -55,10 +52,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     self.currentResidentName = [self.residentsToEvaluate objectAtIndex:indexPath.row];
+    self.residentEvaluated = [self.residentNames objectAtIndex:indexPath.row];
     [self.residentsToEvaluate removeObjectAtIndex:indexPath.row];
     [self.residentNames removeObjectAtIndex:indexPath.row];
-    NSLog(@"selected cell: %i, %@", (int)indexPath.row, self.currentResidentName);
-    [self performSegueWithIdentifier:@"segueToEval" sender:self];
+    NSLog(@"selected cell: %i, %@", (int)indexPath.row, self.currentResidentName);    [self performSegueWithIdentifier:@"segueToEval" sender:self];
 }
 
 
@@ -70,7 +67,7 @@
         QuestionViewController *evalForm = segue.destinationViewController;
         evalForm.residentsToEvaluate = [[NSMutableArray alloc] initWithArray:self.residentsToEvaluate];
         evalForm.currentResidentName = [[NSString alloc] initWithString:self.currentResidentName];
-        evalForm.shiftDate = [[NSString alloc] initWithString:self.shiftDate];
+        evalForm.residentEvaluated = [[NSString alloc] initWithString:self.residentEvaluated];
         evalForm.residentNames = [[NSMutableArray alloc] initWithArray:self.residentNames];
     }
     

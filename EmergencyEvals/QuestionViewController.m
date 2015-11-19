@@ -47,7 +47,7 @@
     [self.competencyName setText:Competencies[self.competencyIndex][0]];
     [self.MilestoneDescription setText:Competencies[self.competencyIndex][1]];
     [self.progressLabel setText:[NSString stringWithFormat:@"%i/12", (self.numberMilestonesCompleted+1)]];
-    
+    [self.residentNameLabel setText:[NSString stringWithFormat:@"Currently Evaluating %@", self.residentEvaluated]];
     
     // Define array with default values of 1: "Unable to Assess"
     self.milestoneEvaluations = [[NSMutableArray alloc] init];
@@ -148,7 +148,6 @@
         // Final array with name and date added
         self.currentResidentArray = self.milestoneEvaluations;
         [self.currentResidentArray addObject:self.currentResidentName];
-        [self.currentResidentArray addObject:self.shiftDate];
         NSLog(@"Final array %@", self.currentResidentArray);
         
         //send array to Parse as PFObject EvaluationData
@@ -310,7 +309,6 @@
         NSLog(@"eval Submitted -> segue to ResidentList to evaluate more residents");
         ResidentListTableViewController *residentTable = segue.destinationViewController;
         residentTable.residentQRList = [[NSMutableArray alloc] initWithArray:self.residentsToEvaluate];
-        residentTable.shiftDate = [[NSString alloc] initWithString:self.shiftDate];
         residentTable.residentNames = [[NSMutableArray alloc] initWithArray:self.residentNames];
     }
     

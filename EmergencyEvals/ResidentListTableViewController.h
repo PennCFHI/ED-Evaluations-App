@@ -17,6 +17,6 @@
 @property (strong, nonatomic) NSString *shiftDate;
 @property (strong, nonatomic) NSMutableArray *residentsToEvaluate;
 @property (strong, nonatomic) IBOutlet UITableView *residentTable;
-
+@property (strong, nonatomic) NSString *residentEvaluated;
 
 @end
