@@ -18,5 +18,6 @@
 @property (strong, nonatomic) NSMutableArray *residentsToEvaluate;
 @property (strong, nonatomic) IBOutlet UITableView *residentTable;
 @property (strong, nonatomic) NSString *residentEvaluated;
+@property (nonatomic) BOOL *hasEvaluatedSegue;
 
 @end

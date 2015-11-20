@@ -310,6 +310,7 @@
         ResidentListTableViewController *residentTable = segue.destinationViewController;
         residentTable.residentQRList = [[NSMutableArray alloc] initWithArray:self.residentsToEvaluate];
         residentTable.residentNames = [[NSMutableArray alloc] initWithArray:self.residentNames];
+        residentTable.hasEvaluatedSegue = TRUE;
     }
     
 }

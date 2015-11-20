@@ -8,6 +8,8 @@
 
 #import "ResidentListTableViewController.h"
 
+#define TAG_CONTINUE 1
+
 @interface ResidentListTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSString *currentResidentName;
@@ -19,13 +21,24 @@
 -(void) viewDidLoad{
     NSLog(@"loaded ResidentListTableViewController");
     
+    
     [super viewDidLoad];
     self.currentResidentName = nil;
     //setup residentTableView
     self.residentsToEvaluate = self.residentQRList;
     [self.navigationItem setHidesBackButton:YES];
     [self.residentTable reloadData];
+    
+    // If already evaluated one resident, show end session button
+    if (self.hasEvaluatedSegue){
+        UIBarButtonItem *endButton = [[UIBarButtonItem alloc]
+                                           initWithTitle:@"End Session"
+                                           style:UIBarButtonItemStyleDone
+                                           target:self
+                                           action:@selector(endSession:)];
+        self.navigationItem.rightBarButtonItem = endButton;
 
+    }
     
 }
 
@@ -55,7 +68,8 @@
     self.residentEvaluated = [self.residentNames objectAtIndex:indexPath.row];
     [self.residentsToEvaluate removeObjectAtIndex:indexPath.row];
     [self.residentNames removeObjectAtIndex:indexPath.row];
-    NSLog(@"selected cell: %i, %@", (int)indexPath.row, self.currentResidentName);    [self performSegueWithIdentifier:@"segueToEval" sender:self];
+    NSLog(@"selected cell: %i, %@", (int)indexPath.row, self.currentResidentName);
+    [self performSegueWithIdentifier:@"segueToEval" sender:self];
 }
 
 
@@ -72,6 +86,35 @@
     }
     
 }
+
+
+-(IBAction)endSession:(id)sender{
+    
+    // End session and segue to main page
+    
+    NSLog(@"Ending session");
+    
+    UIAlertView *endAlert = [[UIAlertView alloc] initWithTitle:@"Thank you!"
+                                                     message:@"After ending this session, evaluations for this shift will be unavailable."
+                                                    delegate:self
+                                           cancelButtonTitle:@"Cancel"
+                                           otherButtonTitles:@"Continue", nil];
+    [endAlert show];
+    endAlert.tag = TAG_CONTINUE;
+    NSLog(@"Continue button pressed on End Session Alert");
+    
+}
+
+- (void)alertView:(UIAlertView *)endAlert clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (endAlert.tag == TAG_CONTINUE) { // handle the altdev
+        if (buttonIndex == 1) {
+            [self performSegueWithIdentifier:@"endSession" sender:self];
+        }
+        
+    }
+}
+
     
 
 @end

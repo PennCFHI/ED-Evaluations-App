@@ -136,6 +136,7 @@
                     <navigationItem key="navigationItem" id="8wJ-da-gX0"/>
                     <connections>
                         <outlet property="residentTable" destination="p2G-Az-ipR" id="j9V-OY-ZKX"/>
+                        <segue destination="Xgv-R2-L7U" kind="push" identifier="endSession" id="z9g-QE-jc4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QwC-ze-tlX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -199,7 +200,7 @@
                                 <rect key="frame" x="126" y="522" width="69" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write here..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JdG-ag-9bS">
@@ -215,7 +216,7 @@
                                     <constraint firstAttribute="height" constant="21" id="2Gq-YQ-xqQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -272,7 +273,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dQ4-cI-4XM"/>
+        <segue reference="z9g-QE-jc4"/>
         <segue reference="z7b-OO-Hut"/>
     </inferredMetricsTieBreakers>
 </document>
