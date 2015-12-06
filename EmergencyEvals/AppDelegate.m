@@ -31,27 +31,12 @@
     [ NSArray arrayWithObjects:
      //0 - name of competency
      @"Emergency Stabilization",
-     //1
      @"Unable to assess",
-     //2
      @"0: Has Not Achieved",
-     //3
      @"1: Recognizes Abnormal Vital Signs",
-     //4
-     @"1.5",
-     //5
      @"2: Recognizes when a patient is unstable, requiring immediate intervention",
-     //6
-     @"2.5",
-     //7
      @"3: Reassesses patient after a stabilization intervention. Prioritizes critical stabilization actions",
-     //8
-     @"3.5",
-     //9
      @"4: Recognizes when resucitation efforts are ineffective",
-     //10
-     @"4.5",
-     //10
      @"5: Develops policies and procedures for the management of critically ill patients",
      //11
      nil
@@ -63,13 +48,9 @@
      @"Unable to assess",
      @"Has not achieved",
      @"1: Performs and communicates a reliable H&P",
-     @"1.5",
      @"2: Performs and communicates a chief complaint focused H&P",
-     @"2.5",
      @"3: Prioritizes essential components of the H&P in a time critical situation",
-     @"3.5",
      @"4: Synthesizes ancillary data (past records, family) routinely when gathering the H&P",
-     @"4.5",
      @"5: Identifies obscure, occult, or rare conditions based soley on H&P",
      nil];
     
@@ -79,13 +60,9 @@
      @"Unable to assess",
      @"Has not achieved",
      @"1: Determines when diagnostic studies are needed",
-     @"1.5",
      @"2: Prioritized essential testing",
-     @"2.5",
      @"3: Interprets diagnostic studies accurately and seeks assistance when needed",
-     @"3.5",
      @"4: Uses diagnostic testing based on pretest probability",
-     @"4.5",
      @"5: Discriminates between subtle and/or conflicting diagnostic results in the context of the patient presentation",
      nil];
     
@@ -95,13 +72,9 @@
      @"Unable to assess",
      @"Has not achieved",
      @"1: Able to contruct a 'most likely' DDX",
-     @"1.5",
      @"2: Able to construct a 'most deadly' DDX",
-     @"2.5",
      @"3: Revises the DDX in response to patients course",
-     @"3.5",
      @"4: Constructs a weighted DDX using all available data and develops a management strategy",
-     @"4.5",
      @"5: Uses clinical experience to identify outliers or unusual presentations",
      nil];
     
@@ -111,13 +84,9 @@
      @"Unable to assess",
      @"Has not achieved",
      @"1: Knows classifications and mechanisms of action of commonly used medications",
-     @"1.5",
      @"2: Considers adverse effects of medications",
-     @"2.5",
      @"3: Considers and recognizes potential drug-drug interactions \nConsiders medication options and selects an appropriate agent",
-     @"3.5",
      @"4: Selects appropriate medications based upon age, weight, and co-morbidities as well as clinical guidelines and financial considerations",
-     @"4.5",
      @"5: Participates in developing institutional policies on pharmacotherapy",
      nil];
     
@@ -127,13 +96,9 @@
      @"Unable to assess",
      @"Has not achieved",
      @"1: Recognizes the need for patient reevaluation",
-     @"1.5",
      @"2: Monitors that necessary therapeutic interventions are performed",
-     @"2.5",
      @"3: Identifies which patients will require ED reassessment \nReevaluates the efficacy of treatments when indicated",
-     @"3.5",
      @"4: Complies and documents with regulatory requirements for disposition of patients to observation and admission",
-     @"4.5",
      @"5: Develops protocols to avoid potential complications of therapies",
      nil];
     
@@ -144,13 +109,9 @@
      @"Unable to assess",
      @"Has not achieved",
      @"1: Describes basic resources available in ED",
-     @"1.5",
      @"2: Formulates specific follow-up plan for common ED complaints",
-     @"2.5",
      @"3: Makes correct disposition decisions (home vs admit vs ICU)",
-     @"3.5",
      @"4: Routinely discusses discharge plans with patients and their family",
-     @"4.5",
      @"5: Develops institutional systems to enhance safe patient dispositions",
      nil];
     
@@ -160,13 +121,9 @@
      @"Unable to assess",
      @"Has not achieved",
      @"1: Manages a single patient effectively",
-     @"1.5",
      @"2: Effectively task switches between two patients",
-     @"2.5",
      @"3: Effectively task switches among multiple patients",
-     @"3.5",
      @"4: Effectively task switches among patient care, trauma assessments, medical command, and senior admin duties",
-     @"4.5",
      @"5: Effectively task switches in a surge or disaster situation",
      nil];
     
@@ -176,13 +133,9 @@
      @"Unable to assess",
      @"Has not achieved",
      @"1: Understands the importance of universal precautions",
-     @"1.5",
      @"2: Knows the indications, complications, anatomic landmarks, equipment, and techniques to perform common ED procedures",
-     @"2.5",
      @"3: Determines alternative strategy if initial attempts to perform a procedure are unsuccessful",
-     @"3.5",
      @"4: Performs procedure on patients with challenging features (poor landmarks, extremes of age, co-morbidities)",
-     @"4.5",
      @"5: Teaches procedural competency and corrects mistakes",
      nil];
     
@@ -192,13 +145,9 @@
      @"Unable to assess",
      @"Has not achieved",
      @"1: Uses local anesthetics appropriate (proper dosing and technique)",
-     @"1.5",
      @"2: Knows the appropriate indications, dosing, and complications of analgesics and sedative medicaitons",
-     @"2.5",
      @"3: Routinely performs presedation assessment and obtains informed consent \nEnsures appropriate monitoring during procedural sedation",
-     @"3.5",
      @"4: Titrates procedural sedation medications to ensure adequate sedation while minimizing recovery time",
-     @"4.5",
      @"5; Develops pain management protocols and care plans",
      nil];
     
@@ -208,13 +157,9 @@
      @"Unable to assess",
      @"Has not achieved",
      @"1: Participates as a member of a patient care team",
-     @"1.5",
      @"2: Communicates effectively with faculty, nurses and other ED staff",
-     @"2.5",
      @"3: Communicates effectively when performing Doc to Doc, sign out rounds, and with consultants",
-     @"3.5",
      @"4: Uses flexible communication strategies when interacting with difficult consultants",
-     @"4.5",
      @"5: Participates in and leads interdepartmental patient-centered care groups",
      nil];
     

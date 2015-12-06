@@ -53,6 +53,7 @@
     [self.navigationItem setHidesBackButton:YES];
     
     NSLog (@"competencyIndex %i is %@", self.competencyIndex, Competencies[self.competencyIndex][0]);
+    NSLog (@"milestone value is %i", self.milestoneValue);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,7 +73,7 @@
 
 - (IBAction)milestoneDecrement:(id)sender {
     // Decrement milestone number and update array with new milestone value
-    if((int)self.milestoneValue>1){
+    if((int)self.milestoneValue>0){
         self.milestoneValue -= 1;
     }
     [self.milestoneNumberLabel setText:[NSString stringWithFormat:@"%i", (int)self.milestoneValue]];
@@ -100,6 +101,7 @@
 - (IBAction)nextMilestone:(id)sender {
     //11 slider competencies, 12th competency is text
 
+    NSLog(@"nextmilestone -> self.milestonevalue is %i", self.milestoneValue);
     NSLog(@"milestone evals array %@", self.milestoneEvaluations);
    
 
@@ -157,6 +159,8 @@
     }
     else if (self.numberMilestonesCompleted == 11){
         // Finished with slider competencies
+        NSNumber *tempMilestoneValue = [NSNumber numberWithInt:(int)self.milestoneValue];
+        [self.milestoneEvaluations replaceObjectAtIndex:(self.competencyIndex) withObject:tempMilestoneValue];
         
         // Rename Next button -> Submit
         //[self.MilestoneNextButton setTitle:@"Submit" forState:UIControlStateNormal];
@@ -182,75 +186,60 @@
     
     else if (self.numberMilestonesCompleted <11){
         // All slider competencies not yet completed -> Go to next slider competency
-        
+
+        // Add milestone value to array
+        NSNumber *tempMilestoneValue = [NSNumber numberWithInt:(int)self.milestoneValue];
+        [self.milestoneEvaluations replaceObjectAtIndex:(self.competencyIndex) withObject:tempMilestoneValue];
+
         // Reset label value for next competency
         self.competencyIndex++;
         [self.competencyName setText:Competencies[self.competencyIndex][0]];
         
-        // Reset slider value:
-        // If user already set value for this competency, slider set to previously entered value
-        // Otherwise set to 1
-        if (((int)self.milestoneEvaluations[self.competencyIndex] != 3)){
-            self.milestoneValue = (int)(self.milestoneEvaluations[self.competencyIndex]);
-        }
-        else self.milestoneValue = 3;
+        // Reset milestone value to previously entered value or default value
+        self.milestoneValue = [(self.milestoneEvaluations[self.competencyIndex]) intValue];
         
+        // Reset milestone description and number label
         [self.milestoneNumberLabel setText:[NSString stringWithFormat:@"%i", (int)self.milestoneValue]];
-
-        
-        // Reset milestone description
-        [self.MilestoneDescription setText:Competencies[self.competencyIndex][(int)self.milestoneValue]];
+        [self.MilestoneDescription setText:Competencies[self.competencyIndex][self.milestoneValue]];
         
     }
 
     [self.progressLabel setText:[NSString stringWithFormat:@"%i/12", (self.numberMilestonesCompleted+1)]];
-
     
 }
 
 
 - (IBAction)pressBack:(id)sender {
     
-    
-    if (self.numberMilestonesCompleted == 0){
-        //do nothing
+    // Add milestone value to array
+    if (self.numberMilestonesCompleted<11){
+        NSNumber *tempMilestoneValue = [NSNumber numberWithInt:(int)self.milestoneValue];
+        [self.milestoneEvaluations replaceObjectAtIndex:(self.competencyIndex) withObject:tempMilestoneValue];
     }
-    else{
-        // Not on first competency -> show back button
-        self.previousButton.hidden = NO;
-
-/*
-        // Can add this back later if we allow user to edit textbox after submission
-        if (self.numberMilestonesCompleted == 12){
-            self.MilestoneDescription.hidden = NO;
-            self.MilestoneSlider.hidden = NO;
-            self.writtenEvaluation.hidden = YES;
-            [self.milestoneEvaluations removeLastObject];
-            //self.numberMilestonesCompleted --;
-            
-        }
-*/
-
-        if (self.numberMilestonesCompleted == 11){
-            // Going from textbox competency -> slider competency
-            self.MilestoneDescription.hidden = NO;
-            self.milestoneNumberLabel.hidden = NO;
-            self.milestoneDecrementButton.hidden = NO;
-            self.milestoneIncrementButton.hidden = NO;
-            self.writtenEvaluation.hidden = YES;
-            self.MilestoneNextButton.hidden = NO;
-        }
         
-        // Restore previous values of label, description, and slider value
-        self.competencyIndex --;
-        self.numberMilestonesCompleted --;
-        int prevMilestoneEval = [self.milestoneEvaluations[self.competencyIndex] intValue];
-        self.milestoneValue = prevMilestoneEval;
-        [self.milestoneNumberLabel setText:[NSString stringWithFormat:@"%i", (int)self.milestoneValue]];
-        [self.competencyName setText:Competencies[self.competencyIndex][0]];
-        [self.MilestoneDescription setText:Competencies[self.competencyIndex][(int)prevMilestoneEval]];
+    // Not on first competency -> show back button
+    self.previousButton.hidden = NO;
+    
+    // Going from textbox competency -> slider competency
+    if (self.numberMilestonesCompleted == 11){
+        self.MilestoneDescription.hidden = NO;
+        self.milestoneNumberLabel.hidden = NO;
+        self.milestoneDecrementButton.hidden = NO;
+        self.milestoneIncrementButton.hidden = NO;
+        self.writtenEvaluation.hidden = YES;
+        self.MilestoneNextButton.hidden = NO;
     }
     
+    // Restore previous values of label, description, and slider value
+    self.competencyIndex --;
+    self.numberMilestonesCompleted --;
+    int prevMilestoneEval = [self.milestoneEvaluations[self.competencyIndex] intValue];
+    self.milestoneValue = prevMilestoneEval;
+    [self.milestoneNumberLabel setText:[NSString stringWithFormat:@"%i", (int)self.milestoneValue]];
+    [self.competencyName setText:Competencies[self.competencyIndex][0]];
+    [self.MilestoneDescription setText:Competencies[self.competencyIndex][(int)prevMilestoneEval]];
+    
+
     if (self.numberMilestonesCompleted == 0){
         // If evaluating first competency -> hide back button
         self.previousButton.hidden = YES;
