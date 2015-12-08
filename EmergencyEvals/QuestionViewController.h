@@ -16,10 +16,16 @@
 @property (strong, nonatomic) NSString *residentEvaluated;
 
 @property (weak, nonatomic) IBOutlet UILabel *competencyName;
-@property (weak, nonatomic) IBOutlet UISlider *MilestoneSlider;
 @property (weak, nonatomic) IBOutlet UITextView *MilestoneDescription;
 @property (weak, nonatomic) IBOutlet UIButton *previousButton;
 @property (weak, nonatomic) IBOutlet UIButton *MilestoneNextButton;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *milestoneIncrementButton;
+@property (weak, nonatomic) IBOutlet UIButton *milestoneDecrementButton;
+@property (weak, nonatomic) IBOutlet UILabel *milestoneNumberLabel;
+@property (nonatomic) int milestoneValue;
+
 
 @property (nonatomic) int competencyIndex;
 @property (nonatomic) int numberMilestonesCompleted;
@@ -36,7 +42,5 @@
 @property (strong, nonatomic) UIImageView *tickbar;
 @property (weak, nonatomic) IBOutlet UILabel *progressLabel;
 
--(IBAction)changed:(id)sender;
--(int)roundSliderValue:(float)x;
 
 @end
