@@ -38,7 +38,7 @@
     self.competencyName.lineBreakMode = NSLineBreakByWordWrapping;
     [self.competencyName sizeToFit];
     [self.competencyName setText:Competencies[self.competencyIndex][0]];
-    [self.MilestoneDescription setText:Competencies[self.competencyIndex][1]];
+    [self.MilestoneDescription setText:Competencies[self.competencyIndex][5]];
     [self.progressLabel setText:[NSString stringWithFormat:@"%i/12", (self.numberMilestonesCompleted+1)]];
     [self.residentNameLabel setText:[NSString stringWithFormat:@"Currently Evaluating %@", self.residentEvaluated]];
     
@@ -73,13 +73,27 @@
 
 - (IBAction)milestoneDecrement:(id)sender {
     // Decrement milestone number and update array with new milestone value
-    if((int)self.milestoneValue>0){
+    if((int)self.milestoneValue>-1){
         self.milestoneValue -= 1;
     }
-    [self.milestoneNumberLabel setText:[NSString stringWithFormat:@"%i", (int)self.milestoneValue]];
-    NSNumber *tempMilestoneValue = [NSNumber numberWithInt:(int)self.milestoneValue];
-    [self.milestoneEvaluations replaceObjectAtIndex:(self.competencyIndex) withObject:tempMilestoneValue];
-    [self.MilestoneDescription setText:Competencies[self.competencyIndex][(int)self.milestoneValue]];
+    
+    // Change description
+    [self.MilestoneDescription setText:Competencies[self.competencyIndex][(int)self.milestoneValue+2]];
+    
+    
+    // Change milestoneNumberLabel and milestoneEvaluations index
+    // If milestoneValue = -1 (unable to assess), write N/A instead of adding int values
+    if (self.milestoneValue!=-1){
+        NSNumber *tempMilestoneValue = [NSNumber numberWithInt:(int)self.milestoneValue];
+        [self.milestoneEvaluations replaceObjectAtIndex:(self.competencyIndex) withObject:tempMilestoneValue];
+        [self.milestoneNumberLabel setText:[NSString stringWithFormat:@"%i", (int)self.milestoneValue]];
+    }
+    else{
+        NSNumber *tempMilestoneValue = [NSNumber numberWithInt:(int)self.milestoneValue];
+        [self.milestoneEvaluations replaceObjectAtIndex:(self.competencyIndex) withObject:tempMilestoneValue];
+        [self.milestoneNumberLabel setText:@"N/A"];
+    }
+    
     NSLog(@"Decremented Milestone to %i", self.milestoneValue);
 }
 
@@ -91,7 +105,7 @@
     [self.milestoneNumberLabel setText:[NSString stringWithFormat:@"%i", (int)self.milestoneValue]];
     NSNumber *tempMilestoneValue = [NSNumber numberWithInt:(int)self.milestoneValue];
     [self.milestoneEvaluations replaceObjectAtIndex:(self.competencyIndex) withObject:tempMilestoneValue];
-    [self.MilestoneDescription setText:Competencies[self.competencyIndex][(int)self.milestoneValue]];
+    [self.MilestoneDescription setText:Competencies[self.competencyIndex][(int)self.milestoneValue+2]];
     NSLog(@"Incremented Milestone to %i", self.milestoneValue);
 }
 
@@ -111,6 +125,20 @@
 
     if (self.numberMilestonesCompleted == 12){
         // Done with evaluation form
+        NSLog(@"Preparing to submit form");
+        
+        
+        // Replace Unable to Assess "-1" values with N/A
+        /*
+        for (int i=0; i<11; i++){
+            NSNumber *indexNumber = self.milestoneEvaluations[i];
+            if([indexNumber isEqualToNumber:[NSNumber numberWithInt:-1]]){
+                [self.milestoneEvaluations replaceObjectAtIndex:i withObject:(@"N/A")];
+                NSLog(@"Replaced object at index %i with N/A", i);
+            }
+        }
+        */
+        
         // Take written value and add it into end of array. Then, evaluation is finished --> segue
         NSString *writtenValue = [NSString stringWithString:(self.writtenEvaluation.text)];
         [self.milestoneEvaluations addObject:writtenValue];
@@ -199,8 +227,14 @@
         self.milestoneValue = [(self.milestoneEvaluations[self.competencyIndex]) intValue];
         
         // Reset milestone description and number label
-        [self.milestoneNumberLabel setText:[NSString stringWithFormat:@"%i", (int)self.milestoneValue]];
-        [self.MilestoneDescription setText:Competencies[self.competencyIndex][self.milestoneValue]];
+        if(self.milestoneValue != -1 ){
+            [self.milestoneNumberLabel setText:[NSString stringWithFormat:@"%i", (int)self.milestoneValue]];
+        }
+        else{
+            [self.milestoneNumberLabel setText:@"N/A"];
+        }
+        
+        [self.MilestoneDescription setText:Competencies[self.competencyIndex][self.milestoneValue+2]];
         
     }
 
@@ -210,13 +244,14 @@
 
 
 - (IBAction)pressBack:(id)sender {
+    NSLog(@"Back Pressed. Current milestone array: \n%@", self.milestoneEvaluations);
     
     // Add milestone value to array
     if (self.numberMilestonesCompleted<11){
         NSNumber *tempMilestoneValue = [NSNumber numberWithInt:(int)self.milestoneValue];
         [self.milestoneEvaluations replaceObjectAtIndex:(self.competencyIndex) withObject:tempMilestoneValue];
     }
-        
+    
     // Not on first competency -> show back button
     self.previousButton.hidden = NO;
     
@@ -233,12 +268,18 @@
     // Restore previous values of label, description, and slider value
     self.competencyIndex --;
     self.numberMilestonesCompleted --;
+    
     int prevMilestoneEval = [self.milestoneEvaluations[self.competencyIndex] intValue];
     self.milestoneValue = prevMilestoneEval;
-    [self.milestoneNumberLabel setText:[NSString stringWithFormat:@"%i", (int)self.milestoneValue]];
     [self.competencyName setText:Competencies[self.competencyIndex][0]];
-    [self.MilestoneDescription setText:Competencies[self.competencyIndex][(int)prevMilestoneEval]];
+    [self.MilestoneDescription setText:Competencies[self.competencyIndex][(int)prevMilestoneEval+2]];
     
+    if ([self.milestoneEvaluations[self.competencyIndex] intValue]!=-1){
+        [self.milestoneNumberLabel setText:[NSString stringWithFormat:@"%i", (int)self.milestoneValue]];
+    }
+    else{
+        [self.milestoneNumberLabel setText:@"N/A"];
+    }
 
     if (self.numberMilestonesCompleted == 0){
         // If evaluating first competency -> hide back button
@@ -246,6 +287,10 @@
     }
     
     [self.progressLabel setText:[NSString stringWithFormat:@"%i/12", (self.numberMilestonesCompleted+1)]];
+    
+    NSLog(@"milestone evals array %@", self.milestoneEvaluations);
+    NSLog(@"back clicked. currently at self.competencyIndex %i. completed %i milestones", self.competencyIndex, self.numberMilestonesCompleted);
+
     
 }
 
