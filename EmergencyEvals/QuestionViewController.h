@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *previousButton;
 @property (weak, nonatomic) IBOutlet UIButton *MilestoneNextButton;
 
+@property (strong, nonatomic) IBOutlet UIImageView *residentPicture;
 
 @property (weak, nonatomic) IBOutlet UIButton *milestoneIncrementButton;
 @property (weak, nonatomic) IBOutlet UIButton *milestoneDecrementButton;

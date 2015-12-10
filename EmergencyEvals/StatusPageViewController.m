@@ -26,6 +26,7 @@
     
     _residentName = [[NSMutableString alloc] init];
     _residentNames = [[NSMutableArray alloc] init];
+    _photoLinks = [[NSMutableArray alloc] init];
 }
 
 -(IBAction)startPressed:(id)sender{
@@ -38,6 +39,7 @@
         {
         //get name from Parse using PennID
         PFQuery *query = [PFQuery queryWithClassName:@"UserConfirmation"];
+    
          [query whereKey:@"pennID" equalTo:self.residentList[i]];
          [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
              if (!object) {
@@ -46,13 +48,22 @@
              else {
                  // The find succeeded.
                
+                 //pull first and last name from Parse
                  NSString *nameFromParse = [NSString stringWithFormat:@"%@ %@", [object objectForKey:@"firstName"], [object objectForKey:@"lastName"]];
-               NSLog(@"Successfully retrieved the object: %@", nameFromParse);
+                 NSLog(@"Successfully retrieved the object: %@", nameFromParse);
                  [_residentNames addObject:nameFromParse];
-//                 _residentNames[i] = nameFromParse;
+             
+                 //pull photoURL from Parse
+                 NSString *photoURL = [NSString stringWithFormat:@"%@", [object objectForKey:@"photoURL"]];
+                 NSLog(@"Successfully retrieved the object: %@", photoURL);
+                 [_photoLinks addObject:photoURL];
+                 
                  NSLog(@"Resident Names: %@", _residentNames);
+                 NSLog(@"Photo Links: %@", _photoLinks);
                 }
-         }];
+             
+            }];
+        
         };
         
         NSLog(@"start button was pressed");
@@ -89,6 +100,8 @@
         residentTable.residentQRList = [[NSMutableArray alloc] initWithArray:self.residentList];
        
         residentTable.residentNames = [[NSMutableArray alloc] initWithArray:self.residentNames];
+        residentTable.photoLinks = [[NSMutableArray alloc] initWithArray:self.photoLinks];
+        
         NSLog(@"QR List to populate table: %@", residentTable.residentQRList);
     
     }
