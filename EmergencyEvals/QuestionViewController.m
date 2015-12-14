@@ -42,6 +42,13 @@
     [self.progressLabel setText:[NSString stringWithFormat:@"%i/12", (self.numberMilestonesCompleted+1)]];
     [self.residentNameLabel setText:[NSString stringWithFormat:@"Currently Evaluating %@", self.residentEvaluated]];
     
+    //set image view with image from URL
+    NSURL *url = [NSURL URLWithString:self.currentPhotoLink];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    UIImage *image = [UIImage imageWithData:data];
+    self.residentPicture = [[UIImageView alloc] initWithImage:image];
+    
+    
     // Define array with default values of 1: "Unable to Assess"
     self.milestoneEvaluations = [[NSMutableArray alloc] init];
     for (int i=0; i<11; i++){

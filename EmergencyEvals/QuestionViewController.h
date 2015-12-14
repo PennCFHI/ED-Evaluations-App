@@ -43,5 +43,6 @@
 @property (strong, nonatomic) UIImageView *tickbar;
 @property (weak, nonatomic) IBOutlet UILabel *progressLabel;
 
+@property (strong, nonatomic) NSString *currentPhotoLink; 
 
 @end
