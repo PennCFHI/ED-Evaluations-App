@@ -41,13 +41,15 @@
     [self.MilestoneDescription setText:Competencies[self.competencyIndex][5]];
     [self.progressLabel setText:[NSString stringWithFormat:@"%i/12", (self.numberMilestonesCompleted+1)]];
     [self.residentNameLabel setText:[NSString stringWithFormat:@"Currently Evaluating %@", self.residentEvaluated]];
+    [self.residentNameLabel sizeToFit];
     
     //set image view with image from URL
     NSURL *url = [NSURL URLWithString:self.currentPhotoLink];
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *image = [UIImage imageWithData:data];
-    self.residentPicture = [[UIImageView alloc] initWithImage:image];
     
+    [self.residentPicture setImage:image];
+    [self.view addSubview:self.residentPicture];
     
     // Define array with default values of 1: "Unable to Assess"
     self.milestoneEvaluations = [[NSMutableArray alloc] init];
