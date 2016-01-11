@@ -17,6 +17,9 @@
 @property (strong, nonatomic) NSString *shiftDate;
 @property (strong, nonatomic) NSMutableArray *residentsToEvaluate;
 @property (strong, nonatomic) IBOutlet UITableView *residentTable;
+@property (strong, nonatomic) NSMutableArray *photoLinks;
+@property (strong, nonatomic) NSString *currentPhotoLink; 
+
 @property (strong, nonatomic) NSString *residentEvaluated;
 @property (nonatomic) BOOL *hasEvaluatedSegue;
 

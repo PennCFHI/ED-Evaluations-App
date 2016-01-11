@@ -66,9 +66,12 @@
     
     self.currentResidentName = [self.residentsToEvaluate objectAtIndex:indexPath.row];
     self.residentEvaluated = [self.residentNames objectAtIndex:indexPath.row];
+    self.currentPhotoLink = [self.photoLinks objectAtIndex:indexPath.row];
     [self.residentsToEvaluate removeObjectAtIndex:indexPath.row];
     [self.residentNames removeObjectAtIndex:indexPath.row];
+    [self.photoLinks removeObjectAtIndex:indexPath.row];
     NSLog(@"selected cell: %i, %@", (int)indexPath.row, self.currentResidentName);
+    NSLog(@"photo link for resident on table view %@", self.currentPhotoLink);
     [self performSegueWithIdentifier:@"segueToEval" sender:self];
 }
 
@@ -83,6 +86,7 @@
         evalForm.currentResidentName = [[NSString alloc] initWithString:self.currentResidentName];
         evalForm.residentEvaluated = [[NSString alloc] initWithString:self.residentEvaluated];
         evalForm.residentNames = [[NSMutableArray alloc] initWithArray:self.residentNames];
+        evalForm.currentPhotoLink = [[NSString alloc] initWithString:self.currentPhotoLink];
     }
     
 }

@@ -19,6 +19,7 @@ BOOL startWasPressed;
 @property (strong, nonatomic) NSMutableString *residentName;
 @property (strong, nonatomic) NSMutableArray *residentNames;
 @property (strong, nonatomic) NSString *shiftDate;
+@property (strong, nonatomic) NSMutableArray *photoLinks;
 
 
 -(IBAction)startPressed:(id)sender;
