@@ -10,4 +10,9 @@
 
 @implementation customSignUpViewController
 
+- (IBAction)signUp:(id)sender {
+}
+
+- (IBAction)cancel:(id)sender {
+}
 @end

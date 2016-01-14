@@ -58,15 +58,70 @@
                     <view key="view" contentMode="scaleToFill" id="fq9-bC-aFT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bsf-vg-9ly">
+                                <rect key="frame" x="0.0" y="269" width="320" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XHG-3M-P96">
+                                <rect key="frame" x="0.0" y="299" width="320" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upI-h5-3rd">
+                                <rect key="frame" x="0.0" y="354" width="320" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logIn:" destination="vYn-te-VJ2" eventType="touchUpInside" id="ZcR-nR-CZ9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c09-6f-Jcc">
+                                <rect key="frame" x="20" y="499" width="280" height="32"/>
+                                <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUp:" destination="vYn-te-VJ2" eventType="touchUpInside" id="rK8-l5-feG"/>
+                                    <segue destination="4le-WD-I5S" kind="modal" identifier="loginToSignup" id="YEA-2T-iFR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HlE-YH-XmJ">
+                                <rect key="frame" x="20" y="20" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancel:" destination="vYn-te-VJ2" eventType="touchUpInside" id="8mL-2t-azh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Penn Med ED Evals" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7A-fp-1Np">
+                                <rect key="frame" x="0.0" y="150" width="320" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="D7A-fp-1Np" firstAttribute="top" secondItem="Ecy-Ck-nUg" secondAttribute="bottom" constant="130" id="Cxa-1r-Ywf"/>
+                            <constraint firstItem="Tno-2d-ylU" firstAttribute="top" secondItem="c09-6f-Jcc" secondAttribute="bottom" constant="37" id="D5Z-Gw-1z5"/>
+                            <constraint firstItem="c09-6f-Jcc" firstAttribute="centerX" secondItem="fq9-bC-aFT" secondAttribute="centerX" id="LgD-cx-c1d"/>
+                            <constraint firstItem="Bsf-vg-9ly" firstAttribute="top" secondItem="D7A-fp-1Np" secondAttribute="bottom" constant="98" id="PiF-7t-uYw"/>
+                            <constraint firstItem="XHG-3M-P96" firstAttribute="top" secondItem="Bsf-vg-9ly" secondAttribute="bottom" id="R42-lR-XVw"/>
+                            <constraint firstItem="c09-6f-Jcc" firstAttribute="top" secondItem="upI-h5-3rd" secondAttribute="bottom" constant="115" id="niI-78-m6G"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <segue destination="4le-WD-I5S" kind="modal" identifier="loginToSignUp" id="zbG-VX-fMX"/>
+                        <outlet property="logIn" destination="upI-h5-3rd" id="kHG-DK-lpo"/>
+                        <outlet property="password" destination="XHG-3M-P96" id="LhD-pc-3qk"/>
+                        <outlet property="username" destination="Bsf-vg-9ly" id="6RX-iH-KOA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OZ6-Hr-dAg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="267" y="938"/>
+            <point key="canvasLocation" x="267" y="932"/>
         </scene>
         <!--Custom Sign Up View Controller-->
         <scene sceneID="rxq-Nk-30s">
@@ -79,8 +134,72 @@
                     <view key="view" contentMode="scaleToFill" id="z9g-4x-mX9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Penn ID " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aQW-5V-aqU">
+                                <rect key="frame" x="0.0" y="154" width="320" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T72-k6-vtn">
+                                <rect key="frame" x="0.0" y="184" width="320" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ica-cb-r2a">
+                                <rect key="frame" x="0.0" y="243" width="320" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FJ6-pH-nPZ">
+                                <rect key="frame" x="0.0" y="214" width="320" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKT-w7-3gd">
+                                <rect key="frame" x="0.0" y="287" width="320" height="37"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logIn:" destination="vYn-te-VJ2" eventType="touchUpInside" id="DmO-0I-zGb"/>
+                                    <action selector="signUp:" destination="4le-WD-I5S" eventType="touchUpInside" id="3y0-pw-aij"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2y-Td-50l">
+                                <rect key="frame" x="20" y="20" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancel:" destination="4le-WD-I5S" eventType="touchUpInside" id="3eB-yF-0ex"/>
+                                    <action selector="cancel:" destination="vYn-te-VJ2" eventType="touchUpInside" id="w7d-vs-DmG"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Penn Med ED Evals" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJj-9r-GQ8">
+                                <rect key="frame" x="0.0" y="81" width="320" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="r2y-Td-50l" secondAttribute="leading" id="50c-7Z-CML"/>
+                            <constraint firstItem="NKT-w7-3gd" firstAttribute="top" secondItem="Ica-cb-r2a" secondAttribute="bottom" constant="14" id="6yD-Bt-e6L"/>
+                            <constraint firstItem="Ica-cb-r2a" firstAttribute="top" secondItem="FJ6-pH-nPZ" secondAttribute="bottom" constant="-1" id="Dll-bh-W4f"/>
+                            <constraint firstItem="TJj-9r-GQ8" firstAttribute="top" secondItem="3Wq-Oe-SJQ" secondAttribute="bottom" constant="61" id="M6M-oY-HnN"/>
+                            <constraint firstItem="vP0-9G-4sR" firstAttribute="top" secondItem="NKT-w7-3gd" secondAttribute="bottom" constant="244" id="Zzp-sZ-geA"/>
+                            <constraint firstItem="r2y-Td-50l" firstAttribute="top" secondItem="3Wq-Oe-SJQ" secondAttribute="bottom" id="ccB-Ac-Dhz"/>
+                            <constraint firstItem="T72-k6-vtn" firstAttribute="top" secondItem="aQW-5V-aqU" secondAttribute="bottom" id="iEc-BL-mQh"/>
+                            <constraint firstItem="FJ6-pH-nPZ" firstAttribute="top" secondItem="T72-k6-vtn" secondAttribute="bottom" id="l6S-wR-jnl"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="email" destination="Ica-cb-r2a" id="BRy-wr-h9j"/>
+                        <outlet property="password" destination="FJ6-pH-nPZ" id="1Rg-C3-ZEa"/>
+                        <outlet property="pennID" destination="aQW-5V-aqU" id="CqB-b3-Ksf"/>
+                        <outlet property="signUp" destination="NKT-w7-3gd" id="1kC-oG-Sc5"/>
+                        <outlet property="username" destination="T72-k6-vtn" id="ooO-pM-ZQa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hXd-sa-JKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
