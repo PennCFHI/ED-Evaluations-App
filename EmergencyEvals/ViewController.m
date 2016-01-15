@@ -42,14 +42,10 @@
         // Create the log in view controller
         PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
         logInViewController.emailAsUsername = TRUE;
-        
-        
         [logInViewController setDelegate:self]; // Set ourselves as the delegate
         
         // Create the sign up view controller
         PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
-  
-        
         [signUpViewController setFields:PFSignUpFieldsDefault];
         signUpViewController.emailAsUsername = TRUE;
         [signUpViewController setDelegate:self]; // Set ourselves as the delegate
@@ -215,10 +211,13 @@
     [PFUser logOut];
     // Create the log in view controller
     PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
+    logInViewController.emailAsUsername = TRUE;
     [logInViewController setDelegate:self]; // Set ourselves as the delegate
     
     // Create the sign up view controller
     PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
+    [signUpViewController setFields:PFSignUpFieldsDefault];
+    signUpViewController.emailAsUsername = TRUE;
     [signUpViewController setDelegate:self]; // Set ourselves as the delegate
     
     // Assign our sign up controller to be displayed from the login controller
