@@ -41,10 +41,17 @@
     if (![PFUser currentUser]) { // No user logged in
         // Create the log in view controller
         PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
+        logInViewController.emailAsUsername = TRUE;
+        
+        
         [logInViewController setDelegate:self]; // Set ourselves as the delegate
         
         // Create the sign up view controller
         PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
+  
+        
+        [signUpViewController setFields:PFSignUpFieldsDefault];
+        signUpViewController.emailAsUsername = TRUE;
         [signUpViewController setDelegate:self]; // Set ourselves as the delegate
         
         // Assign our sign up controller to be displayed from the login controller
@@ -53,10 +60,9 @@
         // Present the log in view controller
         [self presentViewController:logInViewController animated:YES completion:NULL];
     }
-    
 
     
- 
+    
 }
 
 
@@ -237,7 +243,7 @@
     NSString *currentUser = [[PFUser currentUser] username];
     NSLog(@"Current User is: %@", currentUser);
     QRCodeViewController *QRViewController = [[QRCodeViewController alloc] init];
-    self.pennID = [[PFUser currentUser] objectForKey:@"PennID"];
+    self.pennID = [[PFUser currentUser] objectForKey:@"additional"];
     NSLog(@"current User %@, with Penn ID: %@", currentUser, self.pennID);
     QRViewController.userID = self.pennID;
     [self presentViewController:QRViewController animated:YES completion:NULL];

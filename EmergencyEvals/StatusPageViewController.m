@@ -38,7 +38,7 @@
         for (int i = 0; i < _residentList.count; i++)
         {
         //get name from Parse using PennID
-        PFQuery *query = [PFQuery queryWithClassName:@"UserConfirmation"];
+        PFQuery *query = [PFQuery queryWithClassName:@"MasterList"];
     
          [query whereKey:@"pennID" equalTo:self.residentList[i]];
          [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {

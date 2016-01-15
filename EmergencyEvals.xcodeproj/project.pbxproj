@@ -38,8 +38,6 @@
 		3E62DD311BE065DE00868FD6 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E62DD301BE065DE00868FD6 /* Parse.framework */; };
 		3E62DD331BE066F900868FD6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E62DD321BE066F900868FD6 /* ParseUI.framework */; };
 		3E93240E1BE85A21005DD5EB /* StatusPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E93240D1BE85A21005DD5EB /* StatusPageViewController.m */; };
-		3EB6F8A01C47EA8C005C070F /* customSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F89F1C47EA8C005C070F /* customSignUpViewController.m */; };
-		3EB6F8A31C47EAA7005C070F /* customLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F8A21C47EAA7005C070F /* customLoginViewController.m */; };
 		3EC9AE701BE2582F009292D4 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC9AE6F1BE2582F009292D4 /* CoreImage.framework */; };
 		3EC9AE731BE25B08009292D4 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AE721BE25B08009292D4 /* QRCodeViewController.m */; };
 		3EC9AE761BE51AAB009292D4 /* QRScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AE751BE51AAB009292D4 /* QRScannerViewController.m */; };
@@ -97,10 +95,6 @@
 		3E62DD321BE066F900868FD6 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		3E93240C1BE85A21005DD5EB /* StatusPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusPageViewController.h; sourceTree = "<group>"; };
 		3E93240D1BE85A21005DD5EB /* StatusPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusPageViewController.m; sourceTree = "<group>"; };
-		3EB6F89E1C47EA8C005C070F /* customSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customSignUpViewController.h; sourceTree = "<group>"; };
-		3EB6F89F1C47EA8C005C070F /* customSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customSignUpViewController.m; sourceTree = "<group>"; };
-		3EB6F8A11C47EAA7005C070F /* customLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = customLoginViewController.h; path = ../customLoginViewController.h; sourceTree = "<group>"; };
-		3EB6F8A21C47EAA7005C070F /* customLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = customLoginViewController.m; path = ../customLoginViewController.m; sourceTree = "<group>"; };
 		3EC9AE6F1BE2582F009292D4 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		3EC9AE711BE25B08009292D4 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
 		3EC9AE721BE25B08009292D4 /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
@@ -200,13 +194,9 @@
 		3E2840391BDBE257005DC942 /* EmergencyEvals */ = {
 			isa = PBXGroup;
 			children = (
-				3EB6F8A11C47EAA7005C070F /* customLoginViewController.h */,
-				3EB6F8A21C47EAA7005C070F /* customLoginViewController.m */,
 				3E2840421BDBE257005DC942 /* AppDelegate.h */,
 				3E2840431BDBE257005DC942 /* AppDelegate.m */,
 				3E2840451BDBE257005DC942 /* Main.storyboard */,
-				3EB6F89E1C47EA8C005C070F /* customSignUpViewController.h */,
-				3EB6F89F1C47EA8C005C070F /* customSignUpViewController.m */,
 				3EDA08941BEE44BB00413EB0 /* ResidentListTableViewController.h */,
 				3EDA08951BEE44BB00413EB0 /* ResidentListTableViewController.m */,
 				3E2840481BDBE257005DC942 /* ViewController.h */,
@@ -358,14 +348,12 @@
 			files = (
 				3EDA08961BEE44BB00413EB0 /* ResidentListTableViewController.m in Sources */,
 				3EC9AE761BE51AAB009292D4 /* QRScannerViewController.m in Sources */,
-				3EB6F8A01C47EA8C005C070F /* customSignUpViewController.m in Sources */,
 				3E28404A1BDBE257005DC942 /* ViewController.m in Sources */,
 				24ED72AB1BED5E4500683497 /* QuestionViewController.m in Sources */,
 				24ED72AA1BED5E4500683497 /* Globals.m in Sources */,
 				3E2840441BDBE257005DC942 /* AppDelegate.m in Sources */,
 				3EC9AE731BE25B08009292D4 /* QRCodeViewController.m in Sources */,
 				3E2840401BDBE257005DC942 /* main.m in Sources */,
-				3EB6F8A31C47EAA7005C070F /* customLoginViewController.m in Sources */,
 				3E93240E1BE85A21005DD5EB /* StatusPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

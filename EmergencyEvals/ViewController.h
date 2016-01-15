@@ -13,6 +13,7 @@
 #import "QRCodeViewController.h"
 #import "QRScannerViewController.h"
 
+
 @interface ViewController : UIViewController  <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 @property (strong, nonatomic) UITextField *IDNumber;
