@@ -160,7 +160,7 @@
         
         //send array to Parse as PFObject EvaluationData
         PFObject *evaluationData = [PFObject objectWithClassName:@"EvaluationData"];
-        evaluationData[@"Attending"] = [[PFUser currentUser] objectForKey:@"PennID"];
+        evaluationData[@"Attending"] = [[PFUser currentUser] objectForKey:@"additional"];
         evaluationData[@"Resident"] = self.currentResidentName;
         evaluationData[@"Emergency_Stabilization"] = _currentResidentArray[0];
         evaluationData[@"History_and_Physical"] = _currentResidentArray[1];

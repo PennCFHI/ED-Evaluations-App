@@ -44,6 +44,7 @@ typedef NS_OPTIONS(NSInteger, PFSignUpFields) {
     PFSignUpFieldsDismissButton = 1 << 3,
     /*! Default value. Combines Username, Password, Email, Sign Up and Dismiss Buttons. */
     PFSignUpFieldsDefault = (PFSignUpFieldsUsernameAndPassword |
+                             PFSignUpFieldsAdditional |
                              PFSignUpFieldsEmail |
                              PFSignUpFieldsSignUpButton |
                              PFSignUpFieldsDismissButton)
