@@ -41,7 +41,7 @@
     self.scannerInsructionLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 140, self.scannerFrame.frame.size.width - 34, 21)];
     [self.scannerInsructionLabel setTextColor:[UIColor whiteColor]];
     [self.scannerInsructionLabel setNumberOfLines:2];
-    [self.scannerInsructionLabel setText:@"Press 'Scan' to Scan Residents"];
+    [self.scannerInsructionLabel setText:@"Press 'Begin' to Start Scanning Residents"];
     [self.scannerInsructionLabel setFont:[UIFont systemFontOfSize:15.0]];
     [self.scannerInsructionLabel setTextAlignment: NSTextAlignmentCenter];
  
@@ -51,7 +51,7 @@
     
     
     self.scannerCommand = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 200/2, self.view.frame.size.height - 60, 200, 50)];
-    [self.scannerCommand setTitle:@"Scan" forState:UIControlStateNormal];
+    [self.scannerCommand setTitle:@"Begin" forState:UIControlStateNormal];
     [self.scannerCommand setBackgroundColor:[UIColor blackColor]];
     [self.scannerCommand addTarget:self action:@selector(startStopScan:) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:self.scannerCommand];
@@ -85,8 +85,8 @@
     
     if (!self.isReading) {
         if ([self startReading]) {
-            [self.scannerCommand setTitle:@"Stop" forState:UIControlStateNormal];
-            [self.scannerStatus setText:@"Scanning for QR Code..."];
+            [self.scannerCommand setTitle:@"Cancel" forState:UIControlStateNormal];
+            [self.scannerStatus setText:@"Scanning for Resident QR Code..."];
         }
     }
     else{

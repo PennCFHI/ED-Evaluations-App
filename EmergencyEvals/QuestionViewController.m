@@ -177,6 +177,13 @@
         [evaluationData saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
                 NSLog(@"evaluation has been saved");
+                UIAlertView *theAlert = [[UIAlertView alloc] initWithTitle:@"Evaluation Complete!"
+                                                                   message:@"Thank You for Using QR Evals"
+                                                                  delegate:self
+                                                         cancelButtonTitle:@"OK"
+                                                         otherButtonTitles:nil];
+                [theAlert show];
+                
             } else {
                 NSLog(@"error has occured when trying to save Evaluation Data");
             }

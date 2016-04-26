@@ -165,7 +165,7 @@
     
     CompetencyTwelve =
     [ NSArray arrayWithObjects:
-     @"Describe any feedback you discussed with the resident",
+     @"Type or dictate any additional feedback",
      nil];
     
     Competencies =
