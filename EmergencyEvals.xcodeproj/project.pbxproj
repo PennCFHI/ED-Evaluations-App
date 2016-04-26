@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24BC942B1CCFD084001343C7 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 24BC942A1CCFD084001343C7 /* logo.png */; };
 		24DCB8E11C516B650039AC89 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E28404B1BDBE257005DC942 /* Images.xcassets */; };
 		24DCB8E31C5170F70039AC89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24DCB8E21C5170F70039AC89 /* LaunchScreen.storyboard */; };
 		24ED72AA1BED5E4500683497 /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 24ED72A71BED5E4500683497 /* Globals.m */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24BC942A1CCFD084001343C7 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		24DCB8E21C5170F70039AC89 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24ED72A61BED5E4500683497 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
 		24ED72A71BED5E4500683497 /* Globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Globals.m; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				3EC9AE721BE25B08009292D4 /* QRCodeViewController.m */,
 				24DCB8E21C5170F70039AC89 /* LaunchScreen.storyboard */,
 				3E28404B1BDBE257005DC942 /* Images.xcassets */,
+				24BC942A1CCFD084001343C7 /* logo.png */,
 				3E28403A1BDBE257005DC942 /* Supporting Files */,
 			);
 			path = EmergencyEvals;
@@ -330,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E28404C1BDBE257005DC942 /* Images.xcassets in Resources */,
+				24BC942B1CCFD084001343C7 /* logo.png in Resources */,
 				24DCB8E31C5170F70039AC89 /* LaunchScreen.storyboard in Resources */,
 				3E28403E1BDBE257005DC942 /* InfoPlist.strings in Resources */,
 				3E2840471BDBE257005DC942 /* Main.storyboard in Resources */,

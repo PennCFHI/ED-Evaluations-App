@@ -17,18 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evals Beta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfR-Uk-ibI">
-                                <rect key="frame" x="261" y="289" width="79" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="bCQ-KK-mh3">
+                                <rect key="frame" x="138" y="230" width="325" height="140"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AfR-Uk-ibI" firstAttribute="centerX" secondItem="AUS-Q0-pWQ" secondAttribute="centerX" id="387-dC-pET"/>
-                            <constraint firstItem="AfR-Uk-ibI" firstAttribute="top" secondItem="2Ag-8K-hab" secondAttribute="bottom" constant="269" id="3H6-wW-zza"/>
-                            <constraint firstItem="AfR-Uk-ibI" firstAttribute="centerY" secondItem="AUS-Q0-pWQ" secondAttribute="centerY" id="er8-x5-r6V"/>
+                            <constraint firstItem="bCQ-KK-mh3" firstAttribute="centerY" secondItem="AUS-Q0-pWQ" secondAttribute="centerY" id="P8n-7j-uMV"/>
+                            <constraint firstItem="bCQ-KK-mh3" firstAttribute="centerX" secondItem="AUS-Q0-pWQ" secondAttribute="centerX" id="U92-8C-Xlf"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,4 +33,7 @@
             <point key="canvasLocation" x="252" y="383"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo.png" width="325" height="140"/>
+    </resources>
 </document>
